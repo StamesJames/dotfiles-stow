@@ -10,5 +10,5 @@ return {
     vim.opt.relativenumber = true
 
     vim.opt.clipboard = "unnamedplus"
-  end
+  end,
 }

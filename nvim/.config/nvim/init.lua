@@ -3,6 +3,6 @@ vim.g.mapleader = " "
 print("Hello from init.lua")
 require("config.lazy")
 
-require('config.vim-keymaps').setup()
-require('config.vim-options').setup()
-require('config.vim-autocmds').setup()
+require("config.vim-keymaps").setup()
+require("config.vim-options").setup()
+require("config.vim-autocmds").setup()
