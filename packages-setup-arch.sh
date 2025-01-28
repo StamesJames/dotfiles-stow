@@ -5,10 +5,25 @@ makepkg -si
 cd ..
 rm -r paru
 
+### shell setup
 paru -S zsh
-paru -S i3
-paru -S picom
-paru -S feh
+
+##### wm setup
+### i3 setup
+# paru -S i3
+# paru -S polybar
+# paru -S picom
+# paru -S feh
+# paru -S rofi
+
+### hyprland setup
+paru -S wofi
+paru -S hyprpaper
+paru -S hyprlock
+paru -S hypridle
+paru -S waybar
+
+### terminal setup
 paru -S starship
 paru -S alacritty
 paru -S tmux
