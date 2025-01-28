@@ -8,7 +8,7 @@ return {
       ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
       modules = {},
       ignore_install = {},
-      auto_install = false,
+      auto_install = true,
       sync_install = false,
       highlight = {
         enable = true,
