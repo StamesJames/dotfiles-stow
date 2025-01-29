@@ -9,6 +9,6 @@ return {
     vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
     vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
-    -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- disabled for neo-tree
+    vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- disabled for neo-tree
   end,
 }
