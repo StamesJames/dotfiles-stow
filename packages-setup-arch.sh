@@ -2,6 +2,7 @@
 sudo pacman -S git
 git config --global user.email "benedict.smit@tu-dortmund.de"
 git config --global user.name "Benedict Christian Smit"
+git config --global pull.rebase true
 
 ### paru setup
 rustup default stable
