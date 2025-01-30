@@ -1,9 +1,22 @@
+### git setup
+sudo pacman -S git
+git config --global user.email "benedict.smit@tu-dortmund.de"
+git config --global user.name "Benedict Christian Smit"
+
+### paru setup
+rustup default stable
 sudo pacman -S --needed base-devel 
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 cd ..
 rm -r paru
+
+### fonts
+paru -S ttf-meslo-nerd
+
+### dotfile management
+paru -S stow
 
 ### shell setup
 paru -S zsh
@@ -17,6 +30,8 @@ paru -S zsh
 # paru -S rofi
 
 ### hyprland setup
+paru -S wayland
+paru -S hyprland
 paru -S wofi
 paru -S hyprpaper
 paru -S hyprlock
@@ -27,17 +42,26 @@ paru -S waybar
 paru -S starship
 paru -S alacritty
 paru -S tmux
+paru -S tmuxp
 
+### editor setup
 paru -S neovim
+
+### browser setup
 paru -S firefox
 
+### terminal tools
 paru -S ripgrep
 paru -S bat
 paru -S fd
 paru -S fzf
+paru -S lazygit
 
+### tree-sitter-cli
 paru -S nodejs
 paru -S npm
-npm install -g tree-sitter-cli
+paru -S tree-sitter-cli
+sudo npm install -g tree-sitter-cli
 
+### make zsh as default shell
 chsh -s /bin/zsh
