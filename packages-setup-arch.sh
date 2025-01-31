@@ -14,54 +14,56 @@ cd ..
 rm -r paru
 
 ### fonts
-paru -S ttf-meslo-nerd
+pacman -S ttf-meslo-nerd
 
 ### dotfile management
-paru -S stow
+pacman -S stow
 
 ### shell setup
-paru -S zsh
+pacman -S zsh
 
 ##### wm setup
 ### i3 setup
-# paru -S i3
-# paru -S polybar
-# paru -S picom
-# paru -S feh
-# paru -S rofi
+# pacman -S i3-wm
+# pacman -S polybar
+# pacman -S picom
+# pacman -S feh
+# pacman -S rofi
 
 ### hyprland setup
-paru -S wayland
-paru -S hyprland
-paru -S wofi
-paru -S hyprpaper
-paru -S hyprlock
-paru -S hypridle
-paru -S waybar
+pacman -S wayland
+pacman -S hyprland
+pacman -S wofi
+pacman -S hyprpaper
+pacman -S hyprlock
+pacman -S hypridle
+pacman -S waybar
+pacman -S pavucontrol
 
 ### terminal setup
-paru -S starship
-paru -S alacritty
-paru -S tmux
-paru -S tmuxp
+pacman -S starship
+pacman -S alacritty
+pacman -S tmux
+pacman -S tmuxp
 
 ### editor setup
-paru -S neovim
+pacman -S neovim
 
 ### browser setup
-paru -S firefox
+pacman -S firefox
 
 ### terminal tools
-paru -S ripgrep
-paru -S bat
-paru -S fd
-paru -S fzf
-paru -S lazygit
+pacman -S ripgrep
+pacman -S bat
+pacman -S fd
+pacman -S fzf
+pacman -S lazygit
+pacman -S man
 
 ### tree-sitter-cli
-paru -S nodejs
-paru -S npm
-paru -S tree-sitter-cli
+pacman -S nodejs
+pacman -S npm
+pacman -S tree-sitter-cli
 sudo npm install -g tree-sitter-cli
 
 ### make zsh as default shell
