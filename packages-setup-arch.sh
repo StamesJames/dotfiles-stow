@@ -15,6 +15,7 @@ rm -r paru
 
 ### fonts
 pacman -S ttf-meslo-nerd
+pacman -S ttf-font-awesome
 
 ### dotfile management
 pacman -S stow
