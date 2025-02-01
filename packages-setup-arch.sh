@@ -60,6 +60,7 @@ pacman -S fd
 pacman -S fzf
 pacman -S lazygit
 pacman -S man
+pacman -S wl-clipboard
 
 ### tree-sitter-cli
 pacman -S nodejs
