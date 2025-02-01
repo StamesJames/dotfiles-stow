@@ -1,3 +1,10 @@
+### my exports
+export PATH="$HOME/programs/godot:$PATH"
+
+### my aliases
+alias godot="$HOME/programs/godot/Godot_v4.3-stable_linux.x86_64"
+
+### auto generated suff
 # Lines configured by zsh-newuser-install
 eval "$(starship init zsh)"
 export EDITOR="nvim"
@@ -19,3 +26,4 @@ compinit
 # End of lines added by compinstall
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
