@@ -47,6 +47,7 @@ pacman -S starship
 pacman -S alacritty
 pacman -S tmux
 pacman -S tmuxp
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 ### editor setup
 pacman -S neovim
