@@ -38,6 +38,7 @@ pacman -S wofi
 pacman -S hyprpaper
 pacman -S hyprlock
 pacman -S hypridle
+pacman -S hyprshot
 pacman -S waybar
 pacman -S pavucontrol
 
