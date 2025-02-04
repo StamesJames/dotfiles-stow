@@ -10,5 +10,12 @@ return {
     vim.opt.relativenumber = true
 
     vim.opt.clipboard = "unnamedplus"
+
+    vim.opt.columns = 80
+    vim.opt.colorcolumn = { 75 }
+    vim.opt.breakindent = true
+    vim.opt.linebreak = true
+    vim.opt.smoothscroll = true
+    vim.opt.showbreak = "> "
   end,
 }
