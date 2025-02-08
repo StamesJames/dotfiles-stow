@@ -26,12 +26,6 @@ pacman -S stow
 pacman -S zsh
 
 ##### wm setup
-### i3 setup
-# pacman -S i3-wm
-# pacman -S polybar
-# pacman -S picom
-# pacman -S feh
-# pacman -S rofi
 
 ### hyprland setup
 pacman -S wayland
@@ -81,3 +75,11 @@ sudo npm install -g tree-sitter-cli
 
 ### make zsh as default shell
 chsh -s /bin/zsh
+
+### i3 setup
+# pacman -S i3-wm
+# pacman -S polybar
+# pacman -S picom
+# pacman -S feh
+# pacman -S rofi
+
