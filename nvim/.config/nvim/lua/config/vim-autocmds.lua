@@ -10,6 +10,7 @@ return {
     })
 
     vim.api.nvim_create_autocmd("TermOpen", {
+      desc = "Setting Configs for opened vim terminals",
       group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
       callback = function()
         vim.opt.number = false
