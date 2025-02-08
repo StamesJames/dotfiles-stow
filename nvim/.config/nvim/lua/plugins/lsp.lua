@@ -28,7 +28,10 @@ return {
     config = function(_, _)
       local null_ls = require("null-ls")
       null_ls.setup({
-        sources = null_ls.builtins.formatting.stylua,
+        sources = {
+          null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.typstfmt,
+        },
       })
     end,
   },
@@ -49,6 +52,9 @@ return {
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
+      lspconfig.gdscript.setup({
+        capabilities = capabilities,
+      })
       lspconfig.zls.setup({
         capabilities = capabilities,
       })
@@ -56,6 +62,9 @@ return {
         capabilities = capabilities,
       })
       lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.tinymist.setup({
         capabilities = capabilities,
       })
 

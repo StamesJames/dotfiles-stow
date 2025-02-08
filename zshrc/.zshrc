@@ -3,6 +3,7 @@ export PATH="$HOME/programs/godot:$PATH"
 
 ### my aliases
 alias godot="$HOME/programs/godot/Godot_v4.3-stable_linux.x86_64"
+alias gvim="nvim --listen 127.0.0.1:6004"
 
 ### auto generated suff
 # Lines configured by zsh-newuser-install
