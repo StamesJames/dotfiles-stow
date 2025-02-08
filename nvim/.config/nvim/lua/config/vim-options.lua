@@ -1,18 +1,28 @@
 return {
   setup = function()
-    -- opts
+    -- tap
     vim.opt.expandtab = true
     vim.opt.tabstop = 2
     vim.opt.softtabstop = 2
     vim.opt.shiftwidth = 2
 
+    -- line numbering
     vim.opt.number = true
     vim.opt.relativenumber = true
 
+    -- whitespace
+    vim.opt.list = true
+    vim.opt.listchars = {
+      multispace = "·",
+      lead = " ",
+      tab = "> ",
+      trail = "·",
+      nbsp = "+",
+    }
+    -- clipboard things
     vim.opt.clipboard = "unnamedplus"
 
-    vim.opt.columns = 80
-    vim.opt.colorcolumn = { 75 }
+    -- line wraping
     vim.opt.breakindent = true
     vim.opt.linebreak = true
     vim.opt.smoothscroll = true
