@@ -57,14 +57,21 @@ pacman -S neovim
 ### browser setup
 pacman -S firefox
 
+### programs
+pacman -S signal-desktop
+pacman -S telegram-desktop
+pacman -S typst
+
 ### terminal tools
 pacman -S ripgrep
 pacman -S bat
+pacman -S bat-extras
 pacman -S fd
 pacman -S fzf
 pacman -S lazygit
 pacman -S man
 pacman -S wl-clipboard
+pacman -S wget
 
 ### tree-sitter-cli
 pacman -S nodejs
