@@ -8,3 +8,4 @@ require("config.vim-autocmds").setup()
 
 require("config.lazy")
 vim.cmd.colorscheme("catppuccin-mocha")
+
