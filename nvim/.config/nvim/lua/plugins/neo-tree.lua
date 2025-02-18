@@ -9,6 +9,6 @@ return {
   },
   config = function()
     -- key maps
-    vim.keymap.set("n", "<leader>nt", ":Neotree filesystem reveal left<CR>")
+    vim.keymap.set("n", "<leader>nt", ":Neotree filesystem toggle left<CR>")
   end,
 }

@@ -10,9 +10,5 @@ return {
         theme = "dracula",
       },
     },
-    config = function(_, opts)
-      local lualine = require("lualine")
-      lualine.setup(opts)
-    end,
   },
 }
