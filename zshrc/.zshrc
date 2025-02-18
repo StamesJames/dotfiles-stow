@@ -1,5 +1,6 @@
 ### my exports
 export PATH="$HOME/programs/godot:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(batman --export-env)"
 
 ### my aliases
