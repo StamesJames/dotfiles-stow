@@ -9,6 +9,7 @@ return {
     -- line numbering
     vim.opt.number = true
     vim.opt.relativenumber = true
+    vim.opt.signcolumn = "yes"
 
     -- whitespace
     vim.opt.list = true
@@ -19,6 +20,7 @@ return {
       trail = "·",
       nbsp = "+",
     }
+
     -- clipboard things
     vim.opt.clipboard = "unnamedplus"
 
@@ -27,5 +29,21 @@ return {
     vim.opt.linebreak = true
     vim.opt.smoothscroll = true
     vim.opt.showbreak = "> "
+
+    -- searching
+    vim.opt.hlsearch = false
+    vim.opt.incsearch = true
+
+    -- backup and undo
+    vim.opt.swapfile = false
+    vim.opt.backup = false
+    vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+    vim.opt.undofile = true
+
+    -- colors
+    vim.opt.termguicolors = true
+
+    -- scrolling
+    vim.opt.scrolloff = 8
   end,
 }
