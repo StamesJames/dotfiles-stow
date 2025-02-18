@@ -1,26 +1,22 @@
 return {
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "lua_ls",
-        "rust_analyzer",
-        "zls",
-        "tinymist",
-      },
-    },
-  },
-  {
     "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
+    config = function(_, opts)
+      require("mason").setup(opts)
     end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup()
+    opts = {
+      ensure_installed = {
+        "lua_ls",
+        "rust_analyzer",
+        "tinymist",
+        "zls",
+      },
+    },
+    config = function(_, opts)
+      require("mason-lspconfig").setup(opts)
     end,
   },
   {
@@ -30,7 +26,7 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.typstfmt,
+          null_ls.builtins.formatting.typstyle,
         },
       })
     end,
@@ -40,6 +36,7 @@ return {
     lazy = false,
     dependencies = {
       {
+        -- this is imply to configure lua_ls to function properly while additing my nvim config
         "folke/lazydev.nvim",
         ft = "lua",
         opts = {
@@ -49,9 +46,15 @@ return {
         },
       },
     },
-    config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    config = function(_, _)
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       local lspconfig = require("lspconfig")
+      lspconfig.ts_ls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.svelte.setup({
+        capabilities = capabilities,
+      })
       lspconfig.gdscript.setup({
         capabilities = capabilities,
       })
@@ -65,9 +68,21 @@ return {
         capabilities = capabilities,
       })
       lspconfig.tinymist.setup({
+        seettings = {
+          formatterMode = "typstyle",
+          exportPdf = "never",
+        },
         capabilities = capabilities,
       })
-
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        border = "single",
+      })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "single",
+      })
+      vim.diagnostic.config({
+        float = { border = "single" },
+      })
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
