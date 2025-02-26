@@ -40,6 +40,11 @@ return {
           cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
         })
       end)
+      vim.keymap.set("n", "<leader>fn", function()
+        require("telescope.builtin").find_files({
+          cwd = vim.fn.expand("~/notes/"),
+        })
+      end)
     end,
   },
 }
