@@ -162,6 +162,12 @@ echo "#################"
 echo "### zsh setup ###"
 echo "#################"
 chsh -s /bin/zsh
+echo "###########################"
+echo "### zsh plugins install ###"
+echo "###########################"
+sudo pacman -S --needed \
+  zsh-autosuggestions \
+  zsh-syntax-highlighting
 
 echo "############################"
 echo "### devcontainer install ###"
