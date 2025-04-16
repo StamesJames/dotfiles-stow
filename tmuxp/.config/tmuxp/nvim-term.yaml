@@ -1,10 +1,12 @@
 session_name: nvim-term
 windows:
-  - windowname: nvim-term
+  - window_name: nvim-term
     layout: main-horizontal
     options:
       main-pane-height: 75%
     panes: 
-      - focuse: true
-        shell_command: nvim .
-      - 
+      - focus: true
+        shell_command: 
+          - nvim
+      - shell_command: []
+    focus: 1
