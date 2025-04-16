@@ -1,90 +1,181 @@
-### git setup
-sudo pacman -S git
+echo "#################"
+echo "### git install ###"
+echo "#################"
+sudo pacman -S --needed git
+echo "#################"
+echo "### git setup ###"
+echo "#################"
 git config --global user.email "benedict.smit@tu-dortmund.de"
 git config --global user.name "Benedict Christian Smit"
 git config --global pull.rebase true
 git config --global init.defaultBranch main
 
-### paru setup
+echo "##################"
+echo "### rust setup ###"
+echo "##################"
 rustup default stable
-sudo pacman -S --needed base-devel 
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-cd ..
-rm -r paru
+rustup update
 
-### fonts
-sudo pacman -S ttf-meslo-nerd
-sudo pacman -S ttf-font-awesome
-sudo pacman -S ttf-roboto
-sudo pacman -S adobe-source-sans-fonts
+echo "##############################"
+echo "### pacman-contrib install ###"
+echo "##############################"
+sudo pacman -S --needed pacman-contrib
 
-### dotfile management
-sudo pacman -S stow
+echo "##################"
+echo "### paru setup ###"
+echo "##################"
+if ! command -v paru >/dev/null 2>&1; then
+  sudo pacman -S --needed base-devel 
+  git clone https://aur.archlinux.org/paru.git
+  cd paru
+  makepkg -si
+  cd ..
+  rm -r paru
+fi
 
-### shell setup
-sudo pacman -S zsh
+echo "#################################"
+echo "### system upgrade using paru ###"
+echo "#################################"
+sudo paru -Syu
 
-##### wm setup
+echo "######EEEE###########"
+echo "### fonts install ###"
+echo "#########EEEE########"
+sudo pacman -S --needed \
+  ttf-meslo-nerd \
+  ttf-font-awesome \
+  ttf-roboto \
+  adobe-source-sans-fonts
 
-### hyprland setup
-sudo pacman -S wayland
-sudo pacman -S hyprland
-sudo pacman -S wofi
-sudo pacman -S hyprpaper
-sudo pacman -S hyprlock
-sudo pacman -S hypridle
-sudo pacman -S waybar
-sudo pacman -S pavucontrol
-paru -S hyprshot
+echo "####EEE#############"
+echo "### stow install ###"
+echo "####################"
+sudo pacman -S --needed stow
 
-### terminal setup
-sudo pacman -S starship
-sudo pacman -S alacritty
-sudo pacman -S tmux
-sudo pacman -S tmuxp
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+echo "###################"
+echo "### zsh install ###"
+echo "###################"
+sudo pacman -S --needed zsh
 
-### editor setup
-sudo pacman -S neovim
+echo "########################"
+echo "### hyprland install ###"
+echo "########################"
+sudo pacman -S --needed \
+  wayland \
+  hyprland \
+  wofi \
+  hyprpaper \
+  hyprlock \
+  hypridle \
+  waybar \
+  pavucontrol
+paru -S --needed hyprshot
+echo "#####################################"
+echo "### hyprland screen share install ###"
+echo "#####################################"
+sudo pacman -S --needed \
+  pipewire \
+  wireplumber \
+  xdg-desktop-portal-hyprland
+paru -S --needed xwaylandvideobridge
+echo "###################################"
+echo "### hyprland screen share setup ###"
+echo "###################################"
+sudo systemctl enable --now xwaylandvideobridge
 
-### browser setup
-sudo pacman -S firefox
+echo "########################"
+echo "### terminal install ###"
+echo "########################"
+sudo pacman -S --needed \
+  alacritty \
+  starship \
+  tmux \
+  tmuxp
+if [ ! -d ~/.tmux/plugins/tpm]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
-### programs
-sudo pacman -S signal-desktop
-sudo pacman -S telegram-desktop
-sudo pacman -S typst
+echo "###################"
+echo "### IDE install ###"
+echo "###################"
+sudo pacman -S --needed neovim
 
-### terminal tools
-sudo pacman -S ripgrep
-sudo pacman -S bat
-sudo pacman -S bat-extras
-sudo pacman -S fd
-sudo pacman -S fzf
-sudo pacman -S lazygit
-sudo pacman -S man
-sudo pacman -S wl-clipboard
-sudo pacman -S wget
+echo "#######################"
+echo "### browser install ###"
+echo "#######################"
+sudo pacman -S --needed firefox
 
-### js & wasm stuff
-sudo pacman -S nodejs
-sudo pacman -S npm
-sudo pacman -S pnpm
-sudo pacman -S wasm-pack
+echo "##########################"
+echo "### messangers install ###"
+echo "##########################"
+sudo pacman -S --needed \
+  signal-desktop \
+  telegram-desktop
 
-### tree-sitter-cli
-sudo pacman -S tree-sitter-cli
+echo "###########################"
+echo "### typesetting install ###"
+echo "###########################"
+sudo pacman -S --needed \
+  typst \
+  texlive
+
+echo "##############################"
+echo "### terminal tools install ###"
+echo "##############################"
+sudo pacman -S --needed \
+  ripgrep \
+  bat \
+  bat-extras \
+  fd \
+  fzf \
+  lazygit \
+  man \
+  wl-clipboard \
+  wget
+
+echo "################################"
+echo "### nodejs and tools install ###"
+echo "################################"
+sudo pacman -S --needed \
+  nodejs \
+  npm \
+  pnpm \
+  wasm-pack
+
+echo "###########################"
+echo "### tree sitter install ###"
+echo "###########################"
+sudo pacman -S --needed tree-sitter-cli
 sudo npm install -g tree-sitter-cli
 
-### make zsh as default shell
+### printer and scanner
+echo "###################################"
+echo "### printer and scanner install ###"
+echo "###################################"
+sudo pacman -S --needed \
+  sane \
+  sane-airscan \
+  cups
+sudo systemctl enable --now cups
+
+echo "#################"
+echo "### zsh setup ###"
+echo "#################"
 chsh -s /bin/zsh
 
-### i3 setup
-# sudo pacman -S i3-wm
-# sudo pacman -S polybar
-# sudo pacman -S picom
-# sudo pacman -S feh
-# sudo pacman -S rofi
+echo "############################"
+echo "### devcontainer install ###"
+echo "############################"
+sudo pacman -S --needed docker
+sudo npm install -g @devcontainers/cli
+
+# echo "#################"
+# echo "### i3 install ###"
+# echo "#################"
+# sudo pacman -S --needed \
+#   i3-wm \
+#   polybar \
+#   picom \
+#   feh \
+#   rofi
 
