@@ -1,7 +1,8 @@
-echo "#################"
+echo "###################"
 echo "### git install ###"
-echo "#################"
+echo "###################"
 sudo pacman -S --needed git
+sudp pacman -S --needed git-lfs
 echo "#################"
 echo "### git setup ###"
 echo "#################"
@@ -167,7 +168,9 @@ echo "### zsh plugins install ###"
 echo "###########################"
 sudo pacman -S --needed \
   zsh-autosuggestions \
-  zsh-syntax-highlighting
+  zsh-syntax-highlighting \
+  zsh-completions \
+  zsh-history-substring-search
 
 echo "############################"
 echo "### devcontainer install ###"
