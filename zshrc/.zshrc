@@ -9,7 +9,7 @@ autoload -U colors && colors
 
 # cmp opts
 zstyle ':completion:*' menu select # tab opens cmp menu
-zstyle ':completion:*' special-dirs true # dorce . and .. to show in cmp menu
+# zstyle ':completion:*' special-dirs true # dorce . and .. to show in cmp menu
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} ma=0\;33 # colorize cmp menu
 zstyle ':completion:*' squeeze-slashes false # explicit disable to allow /*/ expansion
 zstyle :compinstall filename "$HOME/.zshrc"
@@ -34,8 +34,10 @@ HISTFILE="$XDG_CACHE_HOME/zsh_history"
 # fzf setup
 source <(fzf --zsh) # allow fzf history widget
 
-# keybindings
+# enable vim mode
 bindkey -v
+bindkey "^H" backward-delete-char # makes BACKSPACE delete inserted text
+bindkey "^?" backward-delete-char # make DEL delete inserted text
 
 # launch starship prompt
 eval "$(starship init zsh)"
@@ -43,6 +45,13 @@ eval "$(starship init zsh)"
 # batinit
 eval "$(batman --export-env)"
 
-# plugins
+# zsh plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# keybindings
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
