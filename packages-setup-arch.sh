@@ -132,7 +132,8 @@ sudo pacman -S --needed \
   lazygit \
   man \
   wl-clipboard \
-  wget
+  wget \
+  htop
 
 echo "################################"
 echo "### nodejs and tools install ###"
@@ -147,7 +148,7 @@ echo "###########################"
 echo "### tree sitter install ###"
 echo "###########################"
 sudo pacman -S --needed tree-sitter-cli
-sudo npm install -g tree-sitter-cli
+# sudo npm install -g tree-sitter-cli
 
 ### printer and scanner
 echo "###################################"
