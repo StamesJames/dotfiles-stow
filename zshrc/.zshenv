@@ -8,6 +8,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 # PATH
 export PATH="$HOME/programs/godot:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/programs/zig/zig-linux-x86_64-0.15.0-dev.471+369177f0b:$PATH"
 
 # fzf options
 export FZF_DEFAULT_OPTS="--style minimal --color 16 --layout=reverse --height 30% --preview='bat -p --color=always {}'"
