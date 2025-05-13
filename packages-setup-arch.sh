@@ -161,6 +161,14 @@ sudo pacman -S --needed \
   cups
 sudo systemctl enable --now cups
 
+echo "###################"
+echo "### vlc install ###"
+echo "###################"
+sudo pacman -S --needed \
+  vlc \
+  libdvdread \
+  libdvdnav \
+  libdvdcss
 
 echo "############################"
 echo "### devcontainer install ###"
