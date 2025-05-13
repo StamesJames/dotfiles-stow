@@ -53,10 +53,11 @@ echo "### stow install ###"
 echo "####################"
 sudo pacman -S --needed stow
 
-echo "###################"
-echo "### zsh install ###"
-echo "###################"
-sudo pacman -S --needed zsh
+echo "#####################"
+echo "### shell install ###"
+echo "#####################"
+# sudo pacman -S --needed zsh
+sudo pacman -S --needed fish
 
 echo "########################"
 echo "### hyprland install ###"
@@ -160,24 +161,21 @@ sudo pacman -S --needed \
   cups
 sudo systemctl enable --now cups
 
-echo "#################"
-echo "### zsh setup ###"
-echo "#################"
-chsh -s /bin/zsh
-echo "###########################"
-echo "### zsh plugins install ###"
-echo "###########################"
-sudo pacman -S --needed \
-  zsh-autosuggestions \
-  zsh-syntax-highlighting \
-  zsh-completions \
-  zsh-history-substring-search
 
 echo "############################"
 echo "### devcontainer install ###"
 echo "############################"
 sudo pacman -S --needed docker
 sudo npm install -g @devcontainers/cli
+
+# echo "###########################"
+# echo "### zsh plugins install ###"
+# echo "###########################"
+# sudo pacman -S --needed \
+#   zsh-autosuggestions \
+#   zsh-syntax-highlighting \
+#   zsh-completions \
+#   zsh-history-substring-search
 
 # echo "#################"
 # echo "### i3 install ###"
@@ -189,3 +187,8 @@ sudo npm install -g @devcontainers/cli
 #   feh \
 #   rofi
 
+echo "###################"
+echo "### shell setup ###"
+echo "###################"
+# sudo chsh -s /bin/zsh
+sudo chsh -s /bin/fish
