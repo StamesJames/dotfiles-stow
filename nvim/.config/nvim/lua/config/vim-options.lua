@@ -29,6 +29,7 @@ return {
     vim.opt.linebreak = true
     vim.opt.smoothscroll = true
     vim.opt.showbreak = "> "
+    vim.opt.columns = 80
 
     -- searching
     vim.opt.hlsearch = false
