@@ -199,4 +199,4 @@ echo "###################"
 echo "### shell setup ###"
 echo "###################"
 # sudo chsh -s /bin/zsh
-sudo chsh -s /bin/fish
+chsh -s /bin/fish
