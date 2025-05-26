@@ -40,4 +40,4 @@ SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/stames/programs/godot\x1e/home/stames/programs/zig/zig\x2dlinux\x2dx86_64\x2d0\x2e15\x2e0\x2ddev\x2e471\x2b369177f0b
+SETUVAR fish_user_paths:/home/stames/programs/zig/zig\x2dlinux\x2dx86_64\x2d0\x2e15\x2e0\x2ddev\x2e516\x2babbead1fb\x1e/home/stames/programs/godot\x1e/home/stames/programs/zig/zig\x2dlinux\x2dx86_64\x2d0\x2e15\x2e0\x2ddev\x2e471\x2b369177f0b
