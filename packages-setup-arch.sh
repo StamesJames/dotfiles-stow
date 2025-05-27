@@ -137,7 +137,8 @@ sudo pacman -S --needed \
   man \
   wl-clipboard \
   wget \
-  htop
+  htop \
+  yazi
 
 echo "################################"
 echo "### nodejs and tools install ###"
