@@ -107,6 +107,7 @@ echo "#######################"
 echo "### browser install ###"
 echo "#######################"
 sudo pacman -S --needed firefox
+sudo paru -S --needed zen-browser-bin
 
 echo "##########################"
 echo "### messangers install ###"
