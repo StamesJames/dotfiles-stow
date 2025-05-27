@@ -89,8 +89,9 @@ sudo systemctl enable --now xwaylandvideobridge
 echo "########################"
 echo "### terminal install ###"
 echo "########################"
+# sudo pacman -S --needed alacritty
+sudo pacman -S --needed ghostty
 sudo pacman -S --needed \
-  alacritty \
   starship \
   tmux \
   tmuxp
