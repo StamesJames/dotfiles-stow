@@ -138,7 +138,15 @@ sudo pacman -S --needed \
   wl-clipboard \
   wget \
   htop \
-  yazi
+  yazi \
+  ffmpeg \
+  7zip \
+  jq \
+  poppler \
+  zoxide \
+  imagemagick
+paru -S --needed \
+  resvg
 
 echo "################################"
 echo "### nodejs and tools install ###"
