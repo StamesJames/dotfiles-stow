@@ -148,6 +148,17 @@ sudo pacman -S --needed \
 paru -S --needed \
   resvg
 
+echo "###########################"
+echo "### note taking install ###"
+echo "###########################"
+sudo pacman -S --needed \
+  pandoc-cli \
+  obsidian
+paru -S --needed \
+  zotero-bin
+
+
+
 echo "################################"
 echo "### nodejs and tools install ###"
 echo "################################"
