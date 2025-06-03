@@ -107,7 +107,7 @@ sudo pacman -S --needed neovim
 echo "#######################"
 echo "### browser install ###"
 echo "#######################"
-sudo pacman -S --needed firefox
+# sudo pacman -S --needed firefox
 sudo paru -S --needed zen-browser-bin
 
 echo "##########################"
@@ -157,8 +157,6 @@ sudo pacman -S --needed \
 paru -S --needed \
   zotero-bin
 
-
-
 echo "################################"
 echo "### nodejs and tools install ###"
 echo "################################"
@@ -198,6 +196,12 @@ echo "### devcontainer install ###"
 echo "############################"
 sudo pacman -S --needed docker
 sudo npm install -g @devcontainers/cli
+
+echo "#############################"
+echo "### cloud storage install ###"
+echo "#############################"
+sudo pacman -S --neede \
+  nextcloud-client
 
 # echo "###########################"
 # echo "### zsh plugins install ###"
