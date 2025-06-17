@@ -47,7 +47,8 @@ sudo pacman -S --needed \
   ttf-font-awesome \
   ttf-roboto \
   adobe-source-sans-fonts \
-  ttf-cascadia-code-nerd
+  ttf-cascadia-code-nerd \
+  ttf-fira-sans
 
 echo "####EEE#############"
 echo "### stow install ###"
