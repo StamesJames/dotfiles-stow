@@ -15,3 +15,4 @@ alias gvim="nvim --listen 127.0.0.1:6004"
 alias vim="nvim"
 alias tvim="tmuxp load nvim-term"
 alias ls="ls --color=auto"
+
