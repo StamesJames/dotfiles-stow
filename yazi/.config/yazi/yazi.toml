@@ -1,5 +1,15 @@
 [opener]
 open = [
-  {run = 'xdg-open "$@"', orphan = true, desc = "Open", for = "unix"},
+  { run = 'xdg-open "$@"', orphan = true, desc = "Open", for = "unix" },
+]
+browser = [
+  { run = 'zen-browser "$@"', orphan = true, desc = "Open with zen-browser", for = "unix" },
+]
+edit = [
+  { run = 'ghostty -e nvim "$@"', orphan = true, desx = "edit", for = "unix" }
 ]
 
+[open]
+prepend_rules = [
+  { name = "*.html", use = "browser" },
+]
