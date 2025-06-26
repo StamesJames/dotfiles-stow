@@ -147,7 +147,8 @@ sudo pacman -S --needed \
   zoxide \
   imagemagick
 paru -S --needed \
-  resvg
+  resvg \
+  coursier
 
 echo "###########################"
 echo "### note taking install ###"
