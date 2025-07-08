@@ -39,7 +39,7 @@ echo "### system upgrade using paru ###"
 echo "#################################"
 sudo paru -Syu
 
-echo "######EEEE###########"
+echo "#####################"
 echo "### fonts install ###"
 echo "#########EEEE########"
 sudo pacman -S --needed \
@@ -50,10 +50,13 @@ sudo pacman -S --needed \
   ttf-cascadia-code-nerd \
   ttf-fira-sans
 
-echo "####EEE#############"
-echo "### stow install ###"
-echo "####################"
-sudo pacman -S --needed stow
+echo "##################################"
+echo "### dotfile management install ###"
+echo "##################################"
+sudo pacman -S --needed \
+  stow \
+  gnupg \
+  sops
 
 echo "#####################"
 echo "### shell install ###"
