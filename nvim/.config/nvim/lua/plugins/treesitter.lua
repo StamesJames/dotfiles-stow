@@ -38,6 +38,7 @@ return {
           "python",
           "query",
           "rust",
+          "scala",
           "scss",
           "svelte",
           "tmux",
