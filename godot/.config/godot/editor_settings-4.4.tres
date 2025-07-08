@@ -4,6 +4,7 @@
 keycode = 4194326
 
 [resource]
+interface/editor/display_scale = 2
 interface/editor/editor_screen = -2
 interface/editor/code_font_contextual_ligatures = 0
 interface/theme/preset = "Custom"
@@ -49,6 +50,7 @@ text_editor/theme/highlighting/executing_line_color = Color(0.976471, 0.886275, 
 text_editor/theme/highlighting/code_folding_color = Color(0.498039, 0.517647, 0.611765, 1)
 text_editor/theme/highlighting/search_result_color = Color(0.345098, 0.356863, 0.439216, 1)
 text_editor/theme/highlighting/search_result_border_color = Color(0, 0, 0, 0)
+text_editor/appearance/lines/word_wrap = 1
 text_editor/external/exec_path = "nvim"
 text_editor/external/exec_flags = "--server 127.0.0.1:6004 --remote-send \"<esc>:n {file}<CR>:call cursor({line},{col})<CR>\""
 text_editor/external/use_external_editor = true
