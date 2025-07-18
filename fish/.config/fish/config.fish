@@ -5,8 +5,6 @@ if status is-interactive
   fish_vi_key_bindings
 end
 
-read_env_from_string "$(sops --decrypt ~/secrets/.env)"
-
 ### my aliases
 alias godot4_3="$HOME/programs/godot/Godot_v4.3-stable_linux.x86_64"
 alias godot4_4="$HOME/programs/godot/Godot_v4.4-stable_linux.x86_64"
