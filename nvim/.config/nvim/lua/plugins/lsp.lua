@@ -51,6 +51,10 @@ return {
     config = function(_, _)
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       local lspconfig = require("lspconfig")
+      lspconfig.basedpyright.setup({})
+      lspconfig.ruff.setup({
+        capabilities = capabilities,
+      })
       lspconfig.ts_ls.setup({
         capabilities = capabilities,
       })
