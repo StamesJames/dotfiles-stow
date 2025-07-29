@@ -5,6 +5,7 @@
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
+    "custom/weather",
     "network", 
     "cpu", 
     "memory", 
@@ -99,5 +100,12 @@
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate"
     }
+  },
+  "custom/weather": {
+    "format": "{}",
+    "tooltip": false,
+    "interval": 3600,
+    "exec": "fish -c get_weather_waybar",
+    "return-type": "text"
   }
 }
