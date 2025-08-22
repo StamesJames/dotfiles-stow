@@ -27,5 +27,8 @@ return {
     vim.keymap.set("x", "<leader>p", '"_dP')
     vim.keymap.set("n", "<leader>d", '"_dP')
     vim.keymap.set("v", "<leader>d", '"_dP')
+
+    -- trim trailing whitespace
+    vim.keymap.set("n", "<leader>ww", ":%s/  *$//g<CR>")
   end,
 }
