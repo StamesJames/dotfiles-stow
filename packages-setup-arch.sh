@@ -89,7 +89,6 @@ paru -S --needed xwaylandvideobridge
 echo "###################################"
 echo "### hyprland screen share setup ###"
 echo "###################################"
-sudo systemctl enable --now xwaylandvideobridge
 
 echo "########################"
 echo "### terminal install ###"
