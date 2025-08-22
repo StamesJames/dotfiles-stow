@@ -2,7 +2,7 @@ echo "###################"
 echo "### git install ###"
 echo "###################"
 sudo pacman -S --needed git
-sudp pacman -S --needed git-lfs
+sudo pacman -S --needed git-lfs
 echo "#################"
 echo "### git setup ###"
 echo "#################"
@@ -14,6 +14,7 @@ git config --global init.defaultBranch main
 echo "##################"
 echo "### rust setup ###"
 echo "##################"
+sudo pacman -S rustup
 rustup default stable
 rustup update
 
@@ -31,13 +32,13 @@ if ! command -v paru >/dev/null 2>&1; then
   cd paru
   makepkg -si
   cd ..
-  rm -r paru
+  rm -rf paru
 fi
 
 echo "#################################"
 echo "### system upgrade using paru ###"
 echo "#################################"
-sudo paru -Syu
+paru -Syu
 
 echo "#####################"
 echo "### fonts install ###"
