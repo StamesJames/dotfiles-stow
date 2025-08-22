@@ -15,6 +15,9 @@ return {
         "rust_analyzer",
         "tinymist",
         "zls",
+        "clangd",
+        "fish_lsp",
+        "glsl_analyzer",
       },
     },
     config = function(_, opts)
@@ -52,6 +55,9 @@ return {
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       local lspconfig = require("lspconfig")
       lspconfig.basedpyright.setup({})
+      lspconfig.clangd.setup({
+        capabilities = capabilities,
+      })
       lspconfig.ruff.setup({
         capabilities = capabilities,
       })
