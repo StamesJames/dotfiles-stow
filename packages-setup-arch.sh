@@ -122,6 +122,14 @@ sudo pacman -S --needed \
   signal-desktop \
   telegram-desktop
 
+echo "################################"
+echo "### meeting software install ###"
+echo "################################"
+sudo pacman -S --needed discord
+paru -S --needed \
+  zoom \
+  discord-canary
+
 echo "###########################"
 echo "### typesetting install ###"
 echo "###########################"
