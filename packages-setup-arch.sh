@@ -14,7 +14,7 @@ git config --global init.defaultBranch main
 echo "##################"
 echo "### rust setup ###"
 echo "##################"
-sudo pacman -S rustup
+sudo pacman -S --needed rustup
 rustup default stable
 rustup update
 
@@ -45,7 +45,8 @@ echo "### fonts install ###"
 echo "#########EEEE########"
 sudo pacman -S --needed \
   ttf-meslo-nerd \
-  ttf-font-awesome \
+  woff2-font-awesome \
+  otf-font-awesome \
   ttf-roboto \
   adobe-source-sans-fonts \
   ttf-cascadia-code-nerd \
@@ -111,7 +112,7 @@ sudo pacman -S --needed neovim
 echo "#######################"
 echo "### browser install ###"
 echo "#######################"
-# sudo pacman -S --needed firefox
+sudo pacman -S --needed firefox
 paru -S --needed zen-browser-bin
 
 echo "##########################"
