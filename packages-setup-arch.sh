@@ -241,3 +241,7 @@ echo "### shell setup ###"
 echo "###################"
 # sudo chsh -s /bin/zsh
 chsh -s /bin/fish
+
+fish
+fish_config theme save "Catppuccin Mocha"
+
