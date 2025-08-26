@@ -144,6 +144,13 @@ sudo pacman -S --needed \
   typst \
   texlive
 
+echo "################################"
+echo "### office programms install ###"
+echo "################################"
+sudo pacman -S --needed \
+  libreoffice \
+  gimp
+
 echo "##############################"
 echo "### terminal tools install ###"
 echo "##############################"
