@@ -18,6 +18,13 @@ sudo pacman -S --needed rustup
 rustup default stable
 rustup update
 
+echo "#################"
+echo "### c++ setup ###"
+echo "#################"
+sudo pacman -S --needed \
+  clang \
+  scons
+
 echo "##############################"
 echo "### pacman-contrib install ###"
 echo "##############################"
