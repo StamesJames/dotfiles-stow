@@ -30,5 +30,9 @@ return {
 
     -- trim trailing whitespace
     vim.keymap.set("n", "<leader>ww", ":%s/  *$//g<CR>")
+
+    -- deleting backwards
+    vim.keymap.set("n", "<C-BS>", "bdaw", { noremap = true })
+    vim.keymap.set("i", "<C-BS>", "<ESC>bdawa", { noremap = true })
   end,
 }
