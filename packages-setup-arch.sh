@@ -51,6 +51,7 @@ echo "#####################"
 echo "### fonts install ###"
 echo "#########EEEE########"
 sudo pacman -S --needed \
+  gnu-free-fonts \
   ttf-meslo-nerd \
   woff2-font-awesome \
   otf-font-awesome \
