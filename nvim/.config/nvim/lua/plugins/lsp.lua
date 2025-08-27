@@ -8,23 +8,6 @@ return {
     },
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    opts = {
-      ensure_installed = {
-        "lua_ls",
-        "rust_analyzer",
-        "tinymist",
-        "zls",
-        "clangd",
-        "fish_lsp",
-        "glsl_analyzer",
-      },
-    },
-    config = function(_, opts)
-      require("mason-lspconfig").setup(opts)
-    end,
-  },
-  {
     "nvimtools/none-ls.nvim",
     config = function(_, _)
       local null_ls = require("null-ls")
