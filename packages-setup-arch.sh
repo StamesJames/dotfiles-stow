@@ -110,7 +110,7 @@ sudo pacman -S --needed \
   starship \
   tmux \
   tmuxp
-if [ ! -d ~/.tmux/plugins/tpm]; then
+if [ ! -d ~/.tmux/plugins/tpm ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
@@ -266,7 +266,11 @@ echo "### shell setup ###"
 echo "###################"
 # sudo chsh -s /bin/zsh
 chsh -s /bin/fish
-
 fish
-fish_config theme save "Catppuccin Mocha"
+
+echo "###########################"
+echo "### post packages setup ###"
+echo "###########################"
+
+./post-packages-setup-arch.fish
 
