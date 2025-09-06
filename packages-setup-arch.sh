@@ -232,6 +232,14 @@ echo "#############################"
 sudo pacman -S --neede \
   nextcloud-client
 
+echo "#########################"
+echo "### bluetooth install ###"
+echo "#########################"
+sudo pacman -S --neede \
+  bluez \
+  bluez-utils \
+  blueman
+
 # echo "###########################"
 # echo "### zsh plugins install ###"
 # echo "###########################"
