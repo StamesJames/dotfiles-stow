@@ -44,5 +44,5 @@ local function toggle_terminal()
     vim.api.nvim_win_hide(state.floating.win)
   end
 end
-vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_terminal)
+vim.keymap.set({ "n" }, "<leader>tt", toggle_terminal)
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
