@@ -1,11 +1,7 @@
-[gd_resource type="EditorSettings" load_steps=3 format=3]
+[gd_resource type="EditorSettings" load_steps=2 format=3]
 
 [sub_resource type="InputEventKey" id="InputEventKey_tkgw4"]
 keycode = 4194326
-
-[sub_resource type="InputEventKey" id="InputEventKey_kd1vc"]
-physical_keycode = 81
-unicode = 81
 
 [resource]
 interface/editor/display_scale = 2
@@ -97,9 +93,6 @@ shortcuts = [{
 }, {
 "name": "spatial_editor/viewport_zoom_modifier_2",
 "shortcuts": []
-}, {
-"name": "spatial_editor/tool_select",
-"shortcuts": [SubResource("InputEventKey_kd1vc")]
 }]
 metadata/script_setup_templates_dictionary = {
 "Node": "0NodeDefault",
