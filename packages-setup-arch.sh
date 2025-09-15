@@ -145,7 +145,8 @@ echo "### typesetting install ###"
 echo "###########################"
 sudo pacman -S --needed \
   typst \
-  texlive
+  texlive \
+  python-pylatexenc
 
 echo "################################"
 echo "### office programms install ###"

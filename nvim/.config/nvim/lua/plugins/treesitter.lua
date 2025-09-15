@@ -35,6 +35,8 @@ return {
           "latex",
           "lua",
           "make",
+          "markdown",
+          "markdown_inline",
           "python",
           "query",
           "rust",
