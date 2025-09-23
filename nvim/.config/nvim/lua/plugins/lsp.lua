@@ -38,34 +38,33 @@ return {
     },
     config = function(_, _)
       local capabilities = require("blink.cmp").get_lsp_capabilities()
-      local lspconfig = require("lspconfig")
-      lspconfig.basedpyright.setup({})
-      lspconfig.clangd.setup({
+      vim.lsp.enable("basedpyright")
+      vim.lsp.config("basedpyright", { capabilities = capabilities })
+      vim.lsp.enable("clangd")
+      vim.lsp.config("clangd", { capabilities = capabilities })
+      vim.lsp.enable("ruff")
+      vim.lsp.config("ruff", { capabilities = capabilities })
+      vim.lsp.enable("ts_ls")
+      vim.lsp.config("ts_ls", { capabilities = capabilities })
+      vim.lsp.enable("svelte")
+      vim.lsp.config("svelte", { capabilities = capabilities })
+      vim.lsp.enable("gdscript")
+      vim.lsp.config("gdscript", { capabilities = capabilities })
+      vim.lsp.enable("zls")
+      vim.lsp.config("zls", {
         capabilities = capabilities,
+        settings = {
+          enable_build_on_save = true,
+          build_on_save_step = "check",
+        },
       })
-      lspconfig.ruff.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.svelte.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.gdscript.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.zls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.rust_analyzer.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tinymist.setup({
-        seettings = {
+      vim.lsp.enable("rust_analyzer")
+      vim.lsp.config("rust_analyzer", { capabilities = capabilities })
+      vim.lsp.enable("lua_ls")
+      vim.lsp.config("lua_ls", { capabilities = capabilities })
+      vim.lsp.enable("tinymist")
+      vim.lsp.config("tinymist", {
+        settings = {
           formatterMode = "typstyle",
           exportPdf = "never",
         },
