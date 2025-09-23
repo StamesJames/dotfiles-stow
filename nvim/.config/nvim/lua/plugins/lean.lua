@@ -1,6 +1,8 @@
 return {
   "Julian/lean.nvim",
+  dev = false,
   event = { "BufReadPre *.lean", "BufNewFile *.lean" },
+  lsp = { enable = true },
 
   dependencies = {
     "neovim/nvim-lspconfig",

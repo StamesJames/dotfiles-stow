@@ -23,6 +23,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     lazy = false,
+    dev = false,
     dependencies = {
       {
         -- this is imply to configure lua_ls to function properly while additing my nvim config
