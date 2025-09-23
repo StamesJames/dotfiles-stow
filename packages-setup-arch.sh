@@ -243,6 +243,16 @@ sudo pacman -S --neede \
   bluez-utils \
   blueman
 
+echo "#######################"
+echo "### haskell install ###"
+echo "#######################"
+paru -S --needed \
+  ghcup-hs-bin
+ghcup install ghc
+ghcup install cabal
+ghcup install stack
+ghcup install hls
+
 # echo "###########################"
 # echo "### zsh plugins install ###"
 # echo "###########################"
