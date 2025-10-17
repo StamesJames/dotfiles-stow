@@ -62,8 +62,10 @@ return {
       })
       vim.lsp.enable("rust_analyzer")
       vim.lsp.config("rust_analyzer", { capabilities = capabilities })
+      vim.lsp.enable("stylua")
+      vim.lsp.config("stylua", {})
       vim.lsp.enable("lua_ls")
-      vim.lsp.config("lua_ls", { capabilities = capabilities })
+      vim.lsp.config("lua_ls", { capabilities = capabilities, settings = { format = { enable = false } } })
       vim.lsp.enable("tinymist")
       vim.lsp.config("tinymist", {
         settings = {
@@ -72,15 +74,13 @@ return {
         },
         capabilities = capabilities,
       })
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = "single",
-      })
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-        border = "single",
-      })
       vim.diagnostic.config({
         float = { border = "single" },
       })
+      vim.keymap.del("i", "<C-s>")
+      vim.keymap.set("i", "<C-s>", function()
+        vim.lsp.buf.signature_help({ border = "rounded" })
+      end, {})
       vim.keymap.set("n", "K", function()
         vim.lsp.buf.hover({ border = "rounded" })
       end, {})
@@ -96,7 +96,7 @@ return {
             return
           end
 
-          if client.supports_method("textDocument/formatting") then
+          if client:supports_method("textDocument/formatting") then
             vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = args.buf,
