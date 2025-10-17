@@ -46,5 +46,9 @@ return {
 
     -- scrolling
     vim.opt.scrolloff = 8
+
+    -- textwidth
+    -- vim.opt.textwidth = 80
+    vim.opt.colorcolumn = { "81", "101" }
   end,
 }
