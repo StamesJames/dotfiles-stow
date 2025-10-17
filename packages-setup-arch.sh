@@ -12,6 +12,7 @@ git config --global user.email "benedict.smit@tu-dortmund.de"
 git config --global user.name "Benedict Christian Smit"
 git config --global pull.rebase true
 git config --global init.defaultBranch main
+git config --global core.editor "nvim"
 
 echo "##################"
 echo "### rust setup ###"
@@ -60,7 +61,8 @@ sudo pacman -S --needed \
   ttf-roboto \
   adobe-source-sans-fonts \
   ttf-cascadia-code-nerd \
-  ttf-fira-sans
+  ttf-fira-sans \
+  ttf-lato
 
 echo "##################################"
 echo "### dotfile management install ###"
