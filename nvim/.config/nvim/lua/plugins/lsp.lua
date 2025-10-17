@@ -38,6 +38,8 @@ return {
     },
     config = function(_, _)
       local capabilities = require("blink.cmp").get_lsp_capabilities()
+      vim.lsp.enable("koka")
+      vim.lsp.config("koka", { capabilities = capabilities })
       vim.lsp.enable("basedpyright")
       vim.lsp.config("basedpyright", { capabilities = capabilities })
       vim.lsp.enable("clangd")
