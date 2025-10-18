@@ -15,8 +15,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-print("Hello from init.lua")
-
 vim.hl = vim.highlight
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
