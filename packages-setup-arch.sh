@@ -286,5 +286,6 @@ echo "###########################"
 echo "### post packages setup ###"
 echo "###########################"
 
+./stow-used-packages.fish
 ./post-packages-setup-arch.fish
 
