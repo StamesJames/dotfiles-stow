@@ -9,3 +9,5 @@ set -U EDITOR nvim
 set -U GIT_EDITOR nvim
 
 fish_add_path ~/.ghcup/bin
+
+bat cache --build
