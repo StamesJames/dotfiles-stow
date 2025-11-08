@@ -37,38 +37,48 @@ return {
       },
     },
     config = function(_, _)
+      vim.g.inlay_hints_visible = true
       local capabilities = require("blink.cmp").get_lsp_capabilities()
-      vim.lsp.config("html-lsp", { capabilities = capabilities })
-      vim.lsp.enable("html-lsp")
-      vim.lsp.enable("koka")
+
+      local lsp_enables = {
+        "flix",
+        "koka",
+        "basedpyright",
+        "clangd",
+        "ruff",
+        "ts_ls",
+        "svelte",
+        "gdscript",
+        "zls",
+        "rust_analyzer",
+        "stylua",
+        "lua_ls",
+        "tinymist",
+        "html-lsp",
+      }
+      -- vim.lsp.config("flix", { capabilities = capabilities })
+      require("flix").setup()
+      vim.lsp.config("flix", { capabilities = capabilities })
       vim.lsp.config("koka", { capabilities = capabilities })
-      vim.lsp.enable("basedpyright")
       vim.lsp.config("basedpyright", { capabilities = capabilities })
-      vim.lsp.enable("clangd")
       vim.lsp.config("clangd", { capabilities = capabilities })
-      vim.lsp.enable("ruff")
       vim.lsp.config("ruff", { capabilities = capabilities })
-      vim.lsp.enable("ts_ls")
       vim.lsp.config("ts_ls", { capabilities = capabilities })
-      vim.lsp.enable("svelte")
       vim.lsp.config("svelte", { capabilities = capabilities })
-      vim.lsp.enable("gdscript")
       vim.lsp.config("gdscript", { capabilities = capabilities })
-      vim.lsp.enable("zls")
+      vim.lsp.config("rust_analyzer", { capabilities = capabilities })
+      vim.lsp.config("html-lsp", { capabilities = capabilities })
+      vim.lsp.config("stylua", {})
       vim.lsp.config("zls", {
         capabilities = capabilities,
         settings = {
           enable_build_on_save = true,
           build_on_save_step = "check",
+          inlay_hint = true,
+          inlayHint = true,
         },
       })
-      vim.lsp.enable("rust_analyzer")
-      vim.lsp.config("rust_analyzer", { capabilities = capabilities })
-      vim.lsp.enable("stylua")
-      vim.lsp.config("stylua", {})
-      vim.lsp.enable("lua_ls")
       vim.lsp.config("lua_ls", { capabilities = capabilities, settings = { format = { enable = false } } })
-      vim.lsp.enable("tinymist")
       vim.lsp.config("tinymist", {
         settings = {
           formatterMode = "typstyle",
@@ -76,6 +86,9 @@ return {
         },
         capabilities = capabilities,
       })
+
+      vim.lsp.enable(lsp_enables)
+
       vim.diagnostic.config({
         float = { border = "single" },
       })
@@ -96,6 +109,10 @@ return {
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           if not client then
             return
+          end
+
+          if client:supports_method("textDocument/inlayHint") then
+            vim.lsp.inlay_hint.enable(true)
           end
 
           if client:supports_method("textDocument/formatting") then
