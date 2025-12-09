@@ -229,7 +229,9 @@ sudo pacman -S --needed \
 echo "############################"
 echo "### devcontainer install ###"
 echo "############################"
-sudo pacman -S --needed docker
+sudo pacman -S --needed \
+  docker \
+  podman
 sudo npm install -g @devcontainers/cli
 
 echo "#############################"
