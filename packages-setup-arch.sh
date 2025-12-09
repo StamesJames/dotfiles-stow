@@ -172,15 +172,23 @@ sudo pacman -S --needed \
   wget \
   htop \
   yazi \
-  ffmpeg \
   7zip \
   jq \
-  poppler \
   zoxide \
-  imagemagick
 paru -S --needed \
   resvg \
   coursier
+
+echo "####################################"
+echo "### terminal media tools install ###"
+echo "####################################"
+sudo pacman -S --needed \
+  chafa \
+  ffmpeg \
+  ffmpegthumbnailer \
+  poppler \
+  gnome-epub-thumbnailer \
+  imagemagick
 
 echo "###########################"
 echo "### note taking install ###"
