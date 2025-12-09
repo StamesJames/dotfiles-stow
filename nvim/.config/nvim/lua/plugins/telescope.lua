@@ -6,6 +6,8 @@ return {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-lua/popup.nvim",
+      "nvim-telescope/telescope-media-files.nvim",
     },
     opts = {
       pickers = {
@@ -16,6 +18,13 @@ return {
       extensions = {
         ["ui-select"] = {},
         fzf = {},
+        media_files = {
+          -- filetypes whitelist
+          -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+          filetypes = { "png", "jpg", "mp4", "webm", "pdf", "jpeg", "webp" },
+          -- find command (defaults to `fd`)
+          find_cmd = "rg",
+        },
       },
     },
     config = function(_, opts)
@@ -23,6 +32,7 @@ return {
       telescope.setup(opts)
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
+      telescope.load_extension("media_files")
 
       local live_multigrep = require("config.telescope.multigrep").live_multigrep
 
