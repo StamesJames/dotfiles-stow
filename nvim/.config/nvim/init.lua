@@ -13,7 +13,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
+      { out, "WarningMsg" },
       { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
@@ -30,6 +30,7 @@ require("config.vim-keymaps").setup()
 require("config.vim-options").setup()
 require("config.vim-autocmds").setup()
 require("config.vim-new-filetypes").setup()
+-- require("config.godot").setup()
 
 -- Setup lazy.nvim
 require("lazy").setup({
