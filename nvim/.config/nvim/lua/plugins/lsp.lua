@@ -69,6 +69,7 @@ return {
       vim.lsp.config("rust_analyzer", { capabilities = capabilities })
       vim.lsp.config("html-lsp", { capabilities = capabilities })
       vim.lsp.config("stylua", {})
+      vim.lsp.config("html-lsp", {})
       vim.lsp.config("zls", {
         capabilities = capabilities,
         settings = {
