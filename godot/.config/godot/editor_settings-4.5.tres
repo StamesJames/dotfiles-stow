@@ -7,6 +7,7 @@ keycode = 4194326
 interface/editor/display_scale = 2
 interface/editor/editor_screen = -2
 interface/editor/code_font_contextual_ligatures = 0
+interface/editor/single_window_mode = true
 interface/theme/preset = "Custom"
 interface/theme/base_color = Color(0.117647, 0.117647, 0.180392, 1)
 interface/theme/accent_color = Color(0.796078, 0.65098, 0.968627, 1)
