@@ -56,20 +56,21 @@ return {
         "tinymist",
         "html-lsp",
       }
+      ------------------------- Config -----------------------------------------
       -- vim.lsp.config("flix", { capabilities = capabilities })
       require("flix").setup()
+      -- Flix
       vim.lsp.config("flix", { capabilities = capabilities })
+      -- Koka
       vim.lsp.config("koka", { capabilities = capabilities })
+      -- python
       vim.lsp.config("basedpyright", { capabilities = capabilities })
-      vim.lsp.config("clangd", { capabilities = capabilities })
       vim.lsp.config("ruff", { capabilities = capabilities })
-      vim.lsp.config("ts_ls", { capabilities = capabilities })
-      vim.lsp.config("svelte", { capabilities = capabilities })
-      vim.lsp.config("gdscript", { capabilities = capabilities })
+      -- C, C++
+      vim.lsp.config("clangd", { capabilities = capabilities })
+      -- rust
       vim.lsp.config("rust_analyzer", { capabilities = capabilities })
-      vim.lsp.config("html-lsp", { capabilities = capabilities })
-      vim.lsp.config("stylua", {})
-      vim.lsp.config("html-lsp", {})
+      -- zig
       vim.lsp.config("zls", {
         capabilities = capabilities,
         settings = {
@@ -79,7 +80,21 @@ return {
           inlayHint = true,
         },
       })
+      -- js, ts
+      vim.lsp.config("ts_ls", { capabilities = capabilities })
+      vim.lsp.config("eslint-lsp", { capabilities = capabilities })
+      vim.lsp.config("json-lsp", { capabilities = capabilities })
+
+      -- webdev stuff
+      vim.lsp.config("html-lsp", { capabilities = capabilities })
+      vim.lsp.config("svelte", { capabilities = capabilities })
+      vim.lsp.config("tailwind-language-server", { capabilities = capabilities })
+      -- godot
+      vim.lsp.config("gdscript", { capabilities = capabilities })
+      -- lua
+      vim.lsp.config("stylua", {})
       vim.lsp.config("lua_ls", { capabilities = capabilities, settings = { format = { enable = false } } })
+      -- typst
       vim.lsp.config("tinymist", {
         settings = {
           formatterMode = "typstyle",
@@ -87,7 +102,7 @@ return {
         },
         capabilities = capabilities,
       })
-
+      --------------------------------------------------------------------------
       vim.lsp.enable(lsp_enables)
 
       vim.diagnostic.config({
