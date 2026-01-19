@@ -43,18 +43,30 @@ return {
       local lsp_enables = {
         "flix",
         "koka",
+
         "basedpyright",
-        "clangd",
         "ruff",
-        "ts_ls",
-        "svelte",
-        "gdscript",
-        "zls",
+
+        "clangd",
+
         "rust_analyzer",
+
+        "zls",
+
+        "ts_ls",
+        "eslint",
+        "jsonls",
+
+        "html",
+        "cssls",
+        "svelte",
+        "tailwindcss",
+
+        "gdscript",
         "stylua",
         "lua_ls",
+
         "tinymist",
-        "html-lsp",
       }
       ------------------------- Config -----------------------------------------
       -- vim.lsp.config("flix", { capabilities = capabilities })
@@ -82,13 +94,14 @@ return {
       })
       -- js, ts
       vim.lsp.config("ts_ls", { capabilities = capabilities })
-      vim.lsp.config("eslint-lsp", { capabilities = capabilities })
-      vim.lsp.config("json-lsp", { capabilities = capabilities })
+      vim.lsp.config("eslint", { capabilities = capabilities })
+      vim.lsp.config("jsonls", { capabilities = capabilities })
 
       -- webdev stuff
-      vim.lsp.config("html-lsp", { capabilities = capabilities })
+      vim.lsp.config("html", { capabilities = capabilities })
+      vim.lsp.config("cssls", { capabilities = capabilities })
       vim.lsp.config("svelte", { capabilities = capabilities })
-      vim.lsp.config("tailwind-language-server", { capabilities = capabilities })
+      vim.lsp.config("tailwindcss", { capabilities = capabilities })
       -- godot
       vim.lsp.config("gdscript", { capabilities = capabilities })
       -- lua
