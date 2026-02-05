@@ -239,6 +239,7 @@ echo "### devcontainer install ###"
 echo "############################"
 sudo pacman -S --needed \
   docker \
+  docker-buildx \
   podman
 sudo npm install -g @devcontainers/cli
 
