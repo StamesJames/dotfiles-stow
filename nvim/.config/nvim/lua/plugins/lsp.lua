@@ -67,6 +67,8 @@ return {
         "lua_ls",
 
         "tinymist",
+
+        "fish-lsp",
       }
       ------------------------- Config -----------------------------------------
       -- vim.lsp.config("flix", { capabilities = capabilities })
@@ -115,6 +117,8 @@ return {
         },
         capabilities = capabilities,
       })
+      -- fish
+      vim.lsp.config("fish-lsp", { capabilities = capabilities })
       --------------------------------------------------------------------------
       vim.lsp.enable(lsp_enables)
 
