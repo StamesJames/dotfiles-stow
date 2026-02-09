@@ -13,6 +13,7 @@ return {
         "fzf",
         "quickfix",
         "trouble",
+        "toggleterm",
       },
       options = {
         theme = "dracula",
