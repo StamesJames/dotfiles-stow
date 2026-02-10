@@ -7,13 +7,19 @@ return {
     -- terminal stuff
     vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 
-    -- keymaps
+    -- move through windows
     vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
     vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
     vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
     vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
     -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- deactivated for oil
+
+    -- tabpages
+    vim.keymap.set("n", "<leader>nt", ":tabnew<CR>")
+    vim.keymap.set("n", "<leader>ct", ":tabclose<CR>")
+    vim.keymap.set("n", "<leader>h", ":tabprevious<CR>")
+    vim.keymap.set("n", "<leader>l", ":tabnext<CR>")
 
     -- move lines
     vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
