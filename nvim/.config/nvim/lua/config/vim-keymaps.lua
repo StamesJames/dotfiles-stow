@@ -16,10 +16,10 @@ return {
     -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- deactivated for oil
 
     -- tabpages
-    vim.keymap.set("n", "<leader>nt", ":tabnew<CR>")
+    vim.keymap.set("n", "<leader>nt", ":tab split<CR>")
     vim.keymap.set("n", "<leader>ct", ":tabclose<CR>")
-    vim.keymap.set("n", "<leader>h", ":tabprevious<CR>")
-    vim.keymap.set("n", "<leader>l", ":tabnext<CR>")
+    vim.keymap.set("n", "<leader>j", ":tabprevious<CR>")
+    vim.keymap.set("n", "<leader>k", ":tabnext<CR>")
 
     -- move lines
     vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
