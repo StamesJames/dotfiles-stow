@@ -69,6 +69,8 @@ return {
         "tinymist",
 
         "fish-lsp",
+
+        "glsl_analyzer",
       }
       ------------------------- Config -----------------------------------------
       -- vim.lsp.config("flix", { capabilities = capabilities })
@@ -119,6 +121,8 @@ return {
       })
       -- fish
       vim.lsp.config("fish-lsp", { capabilities = capabilities })
+      -- glsl
+      vim.lsp.config("glsl_analyzer", { capabilities = capabilities })
       --------------------------------------------------------------------------
       vim.lsp.enable(lsp_enables)
 
