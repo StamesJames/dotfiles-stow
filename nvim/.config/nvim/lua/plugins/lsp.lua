@@ -71,8 +71,11 @@ return {
         "fish-lsp",
 
         "glsl_analyzer",
+        "intelephense",
       }
       ------------------------- Config -----------------------------------------
+      -- php
+      vim.lsp.config("intelephense", { capabilities = capabilities })
       -- vim.lsp.config("flix", { capabilities = capabilities })
       require("flix").setup()
       -- Flix

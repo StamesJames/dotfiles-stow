@@ -28,6 +28,11 @@ sudo pacman -S --needed \
   clang \
   scons
 
+echo "#################"
+echo "### php setup ###"
+echo "#################"
+sudo pacman -S --needed php
+
 echo "##############################"
 echo "### pacman-contrib install ###"
 echo "##############################"
@@ -62,7 +67,8 @@ sudo pacman -S --needed \
   adobe-source-sans-fonts \
   ttf-cascadia-code-nerd \
   ttf-fira-sans \
-  ttf-lato
+  ttf-lato \
+  ttf-croscore
 
 echo "##################################"
 echo "### dotfile management install ###"
