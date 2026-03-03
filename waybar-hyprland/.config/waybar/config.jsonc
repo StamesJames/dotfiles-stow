@@ -94,9 +94,9 @@
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
     "menu-actions": {
-      "shutdown": "shutdown now",
-      "reboot": "reboot",
-      "logout": "exit",
+      "shutdown": "hyprshutdown -t 'Shutting down...' --post-cmd 'shutdown -P 0'",
+      "reboot": "hyprshutdown -t 'Restarting...' --post-cmd 'reboot'",
+      "logout": "hyprshutdown",
       "suspend": "systemctl suspend",
       "hibernate": "systemctl hibernate"
     }
