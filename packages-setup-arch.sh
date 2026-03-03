@@ -95,8 +95,12 @@ sudo pacman -S --needed \
   hyprlock \
   hypridle \
   waybar \
-  pavucontrol
-paru -S --needed hyprshot
+  pavucontrol \
+  hyprcursor
+paru -S --needed \
+  hyprshot \
+  hyprshutdown \
+  hyprpicker
 echo "#####################################"
 echo "### hyprland screen share install ###"
 echo "#####################################"
