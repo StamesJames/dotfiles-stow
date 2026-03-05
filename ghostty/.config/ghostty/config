@@ -6,4 +6,4 @@ font-family = CaskaydiaCove Nerd Font
 confirm-close-surface = false
 working-directory = home
 window-inherit-working-directory = false
-
+keybind = ctrl+,=unbind
