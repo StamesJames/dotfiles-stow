@@ -8,7 +8,7 @@ sudo pacman -S --needed git-lfs
 echo "#################"
 echo "### git setup ###"
 echo "#################"
-git config --global user.email "benedict.smit@tu-dortmund.de"
+git config --global user.email "benedict.smit@tuta.com"
 git config --global user.name "Benedict Christian Smit"
 git config --global pull.rebase true
 git config --global init.defaultBranch main
@@ -109,9 +109,6 @@ sudo pacman -S --needed \
   wireplumber \
   xdg-desktop-portal-hyprland
 paru -S --needed xwaylandvideobridge
-echo "###################################"
-echo "### hyprland screen share setup ###"
-echo "###################################"
 
 echo "########################"
 echo "### terminal install ###"
@@ -141,8 +138,7 @@ echo "##########################"
 echo "### messangers install ###"
 echo "##########################"
 sudo pacman -S --needed \
-  signal-desktop \
-  telegram-desktop
+  signal-desktop
 
 echo "################################"
 echo "### meeting software install ###"
@@ -164,8 +160,14 @@ echo "################################"
 echo "### office programms install ###"
 echo "################################"
 sudo pacman -S --needed \
-  libreoffice \
-  gimp
+  libreoffice
+
+echo "################################"
+echo "### graphic programms install ###"
+echo "################################"
+sudo pacman -S --needed \
+  gimp \
+  inkscape
 
 echo "##############################"
 echo "### terminal tools install ###"
@@ -185,6 +187,7 @@ sudo pacman -S --needed \
   7zip \
   jq \
   zoxide \
+  qrencode
 paru -S --needed \
   resvg \
   coursier
@@ -204,10 +207,7 @@ echo "###########################"
 echo "### note taking install ###"
 echo "###########################"
 sudo pacman -S --needed \
-  pandoc-cli \
-  obsidian
-paru -S --needed \
-  zotero-bin
+  pandoc-cli
 
 echo "################################"
 echo "### nodejs and tools install ###"
@@ -222,9 +222,7 @@ echo "###########################"
 echo "### tree sitter install ###"
 echo "###########################"
 sudo pacman -S --needed tree-sitter-cli
-# sudo npm install -g tree-sitter-cli
 
-### printer and scanner
 echo "###################################"
 echo "### printer and scanner install ###"
 echo "###################################"
@@ -267,15 +265,15 @@ sudo pacman -S --neede \
   bluez-utils \
   blueman
 
-echo "#######################"
-echo "### haskell install ###"
-echo "#######################"
-paru -S --needed \
-  ghcup-hs-bin
-ghcup install ghc
-ghcup install cabal
-ghcup install stack
-ghcup install hls
+# echo "#######################"
+# echo "### haskell install ###"
+# echo "#######################"
+# paru -S --needed \
+#   ghcup-hs-bin
+# ghcup install ghc
+# ghcup install cabal
+# ghcup install stack
+# ghcup install hls
 
 # echo "###########################"
 # echo "### zsh plugins install ###"

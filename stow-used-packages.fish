@@ -9,6 +9,6 @@ stow hypr
 stow yazi
 stow bat
 stow tmux
-stow tmuxp
 stow fish
 stow nvim
+stow wofi
