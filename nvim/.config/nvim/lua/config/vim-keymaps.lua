@@ -16,12 +16,18 @@ return {
     vim.keymap.set("n", "<c-,>", ":wincmd <<CR>")
 
     -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- deactivated for oil
+    --
+    vim.keymap.set("n", "<C-q>", ":q<CR>")
 
     -- tabpages
     vim.keymap.set("n", "<leader>nt", ":tab split<CR>")
     vim.keymap.set("n", "<leader>ct", ":tabclose<CR>")
     vim.keymap.set("n", "<leader>j", ":tabprevious<CR>")
     vim.keymap.set("n", "<leader>k", ":tabnext<CR>")
+
+    -- splits
+    vim.keymap.set("n", "<leader>nv", ":vsplit<CR>")
+    vim.keymap.set("n", "<leader>nh", ":split<CR>")
 
     -- move lines
     vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
