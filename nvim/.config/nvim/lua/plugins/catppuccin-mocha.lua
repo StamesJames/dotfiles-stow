@@ -7,9 +7,9 @@ return {
     opts = {
       flavour = "mocha",
       transparent_background = true,
-      integrations = {
-        blink_cmp = true,
-      },
+      default_integrations = true,
+      auto_integrations = true,
+      show_end_of_buffer = true,
     },
   },
 }

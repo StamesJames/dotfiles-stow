@@ -41,47 +41,41 @@ return {
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       local lsp_enables = {
-        "flix",
-        "koka",
-
+        -- python
         "basedpyright",
         "ruff",
-
+        -- C/C++
         "clangd",
-
+        -- Rust
         "rust_analyzer",
-
+        -- Zig
         "zls",
-
+        -- TS/JS
         "ts_ls",
         "eslint",
         "jsonls",
-
+        -- HTML
         "html",
+        -- CSS
         "cssls",
-        "svelte",
         "tailwindcss",
-
+        -- Webframeworks
+        "svelte",
+        -- Godot
         "gdscript",
+        -- Lua
         "stylua",
         "lua_ls",
-
+        -- Typst
         "tinymist",
-
+        -- Fish
         "fish-lsp",
-
+        -- GLSL
         "glsl_analyzer",
+        -- PHP
         "intelephense",
       }
       ------------------------- Config -----------------------------------------
-      -- php
-      vim.lsp.config("intelephense", { capabilities = capabilities })
-      -- vim.lsp.config("flix", { capabilities = capabilities })
-      require("flix").setup()
-      -- Flix
-      vim.lsp.config("flix", { capabilities = capabilities })
-      -- Koka
-      vim.lsp.config("koka", { capabilities = capabilities })
       -- python
       vim.lsp.config("basedpyright", { capabilities = capabilities })
       vim.lsp.config("ruff", { capabilities = capabilities })
@@ -104,11 +98,13 @@ return {
       vim.lsp.config("eslint", { capabilities = capabilities })
       vim.lsp.config("jsonls", { capabilities = capabilities })
 
-      -- webdev stuff
+      -- html
       vim.lsp.config("html", { capabilities = capabilities })
+      -- CSS
       vim.lsp.config("cssls", { capabilities = capabilities })
-      vim.lsp.config("svelte", { capabilities = capabilities })
       vim.lsp.config("tailwindcss", { capabilities = capabilities })
+      -- Webframeworks
+      vim.lsp.config("svelte", { capabilities = capabilities })
       -- godot
       vim.lsp.config("gdscript", { capabilities = capabilities })
       -- lua
@@ -126,6 +122,8 @@ return {
       vim.lsp.config("fish-lsp", { capabilities = capabilities })
       -- glsl
       vim.lsp.config("glsl_analyzer", { capabilities = capabilities })
+      -- php
+      vim.lsp.config("intelephense", { capabilities = capabilities })
       --------------------------------------------------------------------------
       vim.lsp.enable(lsp_enables)
 

@@ -7,6 +7,7 @@ return {
   dependencies = {
     "neovim/nvim-lspconfig",
     "nvim-lua/plenary.nvim",
+    "saghen/blink.cmp",
 
     -- optional dependencies:
 
