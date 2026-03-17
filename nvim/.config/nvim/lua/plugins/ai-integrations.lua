@@ -1,4 +1,34 @@
 return {
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    build = ":Copilot auth",
+    event = "BufReadPost",
+    opts = {
+      suggestion = {
+        enabled = not vim.g.ai_cmp,
+        auto_trigger = true,
+        hide_during_completion = vim.g.ai_cmp,
+        keymap = {
+          accept = false, -- handled by completion engine
+          next = "<M-]>",
+          prev = "<M-[>",
+        },
+      },
+      panel = { enabled = false },
+    },
+    config = function(_, opts)
+      require("copilot").setup(opts)
+      vim.g.ai_accept = function()
+        if require("copilot.suggestion").is_visible() then
+          require("copilot.suggestion").accept()
+          return true
+        end
+      end
+    end,
+  },
+
+  -- {
   -- "yetone/avante.nvim",
   -- -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   -- -- ⚠️ must add this setting! ! !
@@ -68,4 +98,5 @@ return {
   --     ft = { "markdown", "Avante" },
   --   },
   -- },
+  -- }
 }

@@ -1,15 +1,17 @@
 return {
   {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = { "rafamadriz/friendly-snippets" },
 
-    version = "*",
+    version = "1.*",
 
+    --@module 'blink.cmp'
+    --@type blink.cmp.Config
     opts = function(_, opts)
       if not opts.keymap then
         opts.keymap = {}
       end
-      -- opts.keymap = { preset = "default" }
+      opts.keymap = { preset = "default" }
       opts.keymap["<Tab>"] = {
         "snippet_forward",
         function()
@@ -40,6 +42,7 @@ return {
           },
         },
       }
+      return opts
     end,
   },
 }
