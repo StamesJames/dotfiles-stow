@@ -255,7 +255,8 @@ echo "#############################"
 echo "### cloud storage install ###"
 echo "#############################"
 sudo pacman -S --neede \
-  nextcloud-client
+  nextcloud-client \
+  owncloud-client
 
 echo "#########################"
 echo "### bluetooth install ###"
