@@ -16,6 +16,7 @@ return {
         },
       },
       panel = { enabled = false },
+      copilot_model = "",
     },
     config = function(_, opts)
       require("copilot").setup(opts)
