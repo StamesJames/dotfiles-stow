@@ -187,7 +187,9 @@ sudo pacman -S --needed \
   7zip \
   jq \
   zoxide \
-  qrencode
+  qrencode \
+  television \
+  eza
 paru -S --needed \
   resvg \
   coursier
