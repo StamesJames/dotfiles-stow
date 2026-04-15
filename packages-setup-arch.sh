@@ -239,7 +239,7 @@ echo "### vlc install ###"
 echo "###################"
 sudo pacman -S --needed \
   vlc \
-  vlc-plugin-ffmpeg \
+  vlc-plugins-all \
   libdvdread \
   libdvdnav \
   libdvdcss
