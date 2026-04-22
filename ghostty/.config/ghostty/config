@@ -3,7 +3,7 @@
 
 shell-integration = fish
 mouse-hide-while-typing = true
-background-opacity = 1
+background-opacity = 0.95
 theme = catppuccin-mocha.conf
 font-family = CaskaydiaCove Nerd Font
 confirm-close-surface = false
