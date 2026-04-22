@@ -7,8 +7,6 @@ return {
       opts = {},
     },
     "saghen/blink.cmp",
-    -- "hrsh7th/nvim-cmp",
-    -- "hrsh7th/cmp-nvim-lsp",
   },
   ft = { "scala", "sbt", "java" },
   opts = function()
