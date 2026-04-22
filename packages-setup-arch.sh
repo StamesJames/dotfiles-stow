@@ -110,6 +110,12 @@ sudo pacman -S --needed \
   xdg-desktop-portal-hyprland
 paru -S --needed xwaylandvideobridge
 
+echo "#####################################"
+echo "### hyprland screen share install ###"
+echo "#####################################"
+sudo pacman -S --needed \
+  libxkbcommon
+
 echo "########################"
 echo "### terminal install ###"
 echo "########################"
