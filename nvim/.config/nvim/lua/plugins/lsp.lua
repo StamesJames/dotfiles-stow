@@ -74,6 +74,10 @@ return {
         "glsl_analyzer",
         -- PHP
         "intelephense",
+        -- DOT langauge
+        "dotls",
+        -- just
+        "just",
       }
       ------------------------- Config -----------------------------------------
       -- python
@@ -124,6 +128,10 @@ return {
       vim.lsp.config("glsl_analyzer", { capabilities = capabilities })
       -- php
       vim.lsp.config("intelephense", { capabilities = capabilities })
+      -- DOT language
+      vim.lsp.config("dotls", { capabilities = capabilities })
+      -- just
+      vim.lsp.config("just", { capabilities = capabilities })
       --------------------------------------------------------------------------
       vim.lsp.enable(lsp_enables)
 
