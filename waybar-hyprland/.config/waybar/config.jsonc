@@ -2,19 +2,23 @@
   // -*- mode: jsonc -*-
   "position": "top",
   "spacing": 4,
-  "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["hyprland/window"],
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
   "modules-right": [
     "custom/weather",
-    "network", 
-    "cpu", 
-    "memory", 
+    "network",
+    "cpu",
+    "memory",
     "temperature",
-    "pulseaudio", 
-    "tray", 
-    "battery", 
+    "pulseaudio",
+    "tray",
+    "battery",
     "backlight",
-    "clock", 
+    "clock",
     "custom/power"
   ],
   "network": {
@@ -40,7 +44,11 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -57,7 +65,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol"
   },
@@ -74,12 +86,28 @@
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "backlight": {
     "device": "acpi_video1",
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "tray": {
     "spacing": 5
@@ -89,7 +117,7 @@
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
   },
   "custom/power": {
-    "format" : "⏻ ",
+    "format": "⏻ ",
     "tooltip": false,
     "menu": "on-click",
     "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
@@ -107,5 +135,11 @@
     "interval": 3600,
     "exec": "fish -c get_weather_waybar",
     "return-type": "text"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "hyprctl eval 'hl.dispatch(hl.dsp.focus({workspace = {name}}))'",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
   }
 }
