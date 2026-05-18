@@ -123,15 +123,6 @@ hl.window_rule({
   no_focus = true,
 })
 
--------------------
------- theme ------
--------------------
-
-local source = "~/.config/hypr/mocha.conf"
-hl.on("hyprland.start", function()
-  hl.exec_cmd("hyprctl setcursor catppuccin-mocha-dark-cursors 28")
-end)
-
 -------------------------
 ------ MY PROGRAMS ------
 -------------------------
@@ -149,16 +140,20 @@ local menu = "wofi --show drun"
 -----------------------
 ---
 hl.on("hyprland.start", function()
+  hl.exec_cmd("hyprctl setcursor catppuccin-mocha-dark-cursors 28")
   hl.exec_cmd("waybar & hyprpaper & hypridle")
   hl.exec_cmd(terminal, { workspace = "1 silent" })
   hl.exec_cmd(terminal .. " -e ${HOME}/.config/hypr/set_laptop_keyboard_enabled.fish")
   hl.exec_cmd("nextcloud --background")
-  hl.exec_cmd('$terminal --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/', {
-    workspace = "special:notes silent",
+  hl.exec_cmd(terminal .. ' --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/', {
+    workspace = "special:notes",
   })
-  hl.exec_cmd('$terminal -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/Todos.md', {
-    workspace = "special:todos silent",
-  })
+  hl.exec_cmd(
+    terminal .. ' --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/Todos.md',
+    {
+      workspace = "special:todos",
+    }
+  )
   hl.exec_cmd("ibus start --type wayland")
   hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
 end)
@@ -174,6 +169,8 @@ local mainMod = "SUPER"
 
 hl.bind(mainMod .. " + return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(
   mainMod .. " + M",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
