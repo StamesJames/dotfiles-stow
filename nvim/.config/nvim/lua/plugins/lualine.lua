@@ -12,6 +12,7 @@ return {
     enabled = true,
     dependencies = {
       { "nvim-tree/nvim-web-devicons", opt = true },
+      { "catppuccin/nvim" },
     },
     opts = {
       sections = {
@@ -30,7 +31,7 @@ return {
         "toggleterm",
       },
       options = {
-        theme = "dracula",
+        theme = require("catppuccin.utils.lualine"),
       },
     },
   },
