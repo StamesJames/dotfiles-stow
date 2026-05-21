@@ -6,6 +6,7 @@ local function wordcount()
     return "W:" .. count.words
   end
 end
+
 return {
   {
     "nvim-lualine/lualine.nvim",
@@ -31,7 +32,7 @@ return {
         "toggleterm",
       },
       options = {
-        theme = require("catppuccin.utils.lualine"),
+        theme = require("catppuccin.utils.lualine")("mocha"),
       },
     },
   },
