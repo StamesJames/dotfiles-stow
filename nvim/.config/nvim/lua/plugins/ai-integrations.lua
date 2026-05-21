@@ -1,14 +1,15 @@
 return {
   {
     "zbirenbaum/copilot.lua",
+    lazy = true,
     cmd = "Copilot",
-    build = ":Copilot auth",
-    event = "BufReadPost",
+    -- build = ":Copilot auth",
+    event = "InsertEnter",
     opts = {
       suggestion = {
-        enabled = not vim.g.ai_cmp,
-        auto_trigger = true,
-        hide_during_completion = vim.g.ai_cmp,
+        enabled = true,
+        auto_trigger = false,
+        hide_during_completion = true,
         keymap = {
           accept = false, -- handled by completion engine
           next = "<M-]>",
@@ -16,6 +17,7 @@ return {
         },
       },
       panel = { enabled = false },
+      nes = { enabled = false },
       copilot_model = "",
     },
     config = function(_, opts)
