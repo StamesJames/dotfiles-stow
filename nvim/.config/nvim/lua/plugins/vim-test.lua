@@ -10,7 +10,7 @@ return {
       -- vim.keymap.set("n", "<leader>a", ":TestSuit<CR>")
       -- vim.keymap.set("n", "<leader>l", ":TestLast<CR>")
       -- vim.keymap.set("n", "<leader>g", ":TestVisit<CR>")
-      vim.cmd("let test#stratagy = 'vimux'")
+      vim.cmd("let test#strategy = 'vimux'")
     end,
   },
 }
