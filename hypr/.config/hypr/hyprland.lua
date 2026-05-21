@@ -146,12 +146,12 @@ hl.on("hyprland.start", function()
   hl.exec_cmd(terminal .. " -e ${HOME}/.config/hypr/set_laptop_keyboard_enabled.fish")
   hl.exec_cmd("nextcloud --background")
   hl.exec_cmd(terminal .. ' --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/', {
-    workspace = "special:notes",
+    workspace = "special:notes silent",
   })
   hl.exec_cmd(
     terminal .. ' --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/Todos.md',
     {
-      workspace = "special:todos",
+      workspace = "special:todos silent",
     }
   )
   hl.exec_cmd("ibus start --type wayland")
