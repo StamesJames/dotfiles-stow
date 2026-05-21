@@ -18,6 +18,10 @@ return {
           name = "notes",
           path = "~/Nextcloud/notes/",
         },
+        {
+          name = "writing",
+          path = "~/Nextcloud/writing/",
+        },
       },
     },
   },
