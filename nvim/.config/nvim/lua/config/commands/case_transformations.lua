@@ -1,26 +1,34 @@
 local M = {}
-function M.split_words(str)
-  local s = str
-  s = s:gsub("[_%-%.%s]", " ")
-  s = s:gsub("([%l])([%u])", "%1 %2")
-  s = s:gsub("([%u])([%u][%l])", "%1 %2")
-  local words = {}
-  for word in s:gmatch("%S+") do
-    table.insert(words, word:lower())
+
+local utils = require("utils")
+
+---@param str string
+---@return string
+function M.to_acronym(str)
+  local words = utils.split_words(str)
+  local acronym = ""
+  for _, word in ipairs(words) do
+    acronym = acronym .. word:sub(1, 1):upper()
   end
-  return words
+  return acronym
 end
 
+---@param str string
+---@return string
 function M.to_snake_case(str)
-  return table.concat(M.split_words(str), "_")
+  return table.concat(utils.split_words(str), "_")
 end
 
+---@param str string
+---@return string
 function M.to_kebab_case(str)
-  return table.concat(M.split_words(str), "-")
+  return table.concat(utils.split_words(str), "-")
 end
 
+---@param str string
+---@return string
 function M.to_camel_case(str)
-  local words = M.split_words(str)
+  local words = utils.split_words(str)
   if #words == 0 then
     return str
   end
@@ -31,8 +39,10 @@ function M.to_camel_case(str)
   return result
 end
 
+---@param str string
+---@return string
 function M.to_pascal_case(str)
-  local words = M.split_words(str)
+  local words = utils.split_words(str)
   local result = ""
   for _, word in ipairs(words) do
     result = result .. word:sub(1, 1):upper() .. word:sub(2)
@@ -40,18 +50,23 @@ function M.to_pascal_case(str)
   return result
 end
 
+---@param str string
+---@return string
 function M.to_space_separated(str)
-  return table.concat(M.split_words(str), " ")
+  return table.concat(utils.split_words(str), " ")
 end
 
+---@param str string
+---@return string
 function M.to_title_case(str)
-  local words = M.split_words(str)
+  local words = utils.split_words(str)
   for i, word in ipairs(words) do
     words[i] = word:sub(1, 1):upper() .. word:sub(2)
   end
   return table.concat(words, " ")
 end
 
+---@param transform_fn fun(str: string): string
 function M.apply_transform(transform_fn)
   local start_line = vim.fn.line("'<")
   local start_col = vim.fn.col("'<")
@@ -90,6 +105,7 @@ function M.setup()
     KebabCase = M.to_kebab_case,
     SpaceCase = M.to_space_separated,
     TitleCase = M.to_title_case,
+    Acronym = M.to_acronym,
   }
 
   for name, fn in pairs(command_map) do
@@ -97,17 +113,14 @@ function M.setup()
       M.apply_transform(fn)
     end, { range = true })
   end
+
   vim.keymap.set("v", "<leader>cs", ":'<,'>SnakeCase<CR>", { desc = "snake_case" })
-
   vim.keymap.set("v", "<leader>cp", ":'<,'>PascalCase<CR>", { desc = "PascalCase" })
-
   vim.keymap.set("v", "<leader>cc", ":'<,'>CamelCase<CR>", { desc = "camelCase" })
-
   vim.keymap.set("v", "<leader>ck", ":'<,'>KebabCase<CR>", { desc = "Kebab case" })
-
   vim.keymap.set("v", "<leader>cw", ":'<,'>SpaceCase<CR>", { desc = "Space separated" })
-
   vim.keymap.set("v", "<leader>ct", ":'<,'>TitleCase<CR>", { desc = "Title case" })
+  vim.keymap.set("v", "<leader>ca", ":'<,'>Acronym<CR>", { desc = "Acronym" })
 end
 
 return M
