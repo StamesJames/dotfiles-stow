@@ -55,9 +55,9 @@ return {
           cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy"),
         })
       end)
-      -- This searches in my notes folder
+      -- This searches in my notes folder (includes YAML aliases in search)
       vim.keymap.set("n", "<leader>fn", function()
-        require("telescope.builtin").find_files({
+        require("config.telescope.notes").find_notes_with_aliases({
           cwd = vim.fn.expand("~/Nextcloud/notes/"),
         })
       end)
