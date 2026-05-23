@@ -72,26 +72,29 @@ M.find_notes_with_aliases = function(opts)
     })
   end
 
-  pickers.new(opts, {
-    prompt_title = "Notes",
-    finder = finders.new_table({
-      results = entries,
-      entry_maker = function(entry)
-        return entry
-      end,
-    }),
-    sorter = conf.generic_sorter(opts),
-    attach_mappings = function(prompt_bufnr)
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local selection = action_state.get_selected_entry()
-        if selection then
-          vim.cmd("edit " .. vim.fn.fnameescape(selection.filename))
-        end
-      end)
-      return true
-    end,
-  }):find()
+  pickers
+      .new(opts, {
+        prompt_title = "Notes",
+        previewer = conf.grep_previewer(opts),
+        finder = finders.new_table({
+          results = entries,
+          entry_maker = function(entry)
+            return entry
+          end,
+        }),
+        sorter = conf.generic_sorter(opts),
+        attach_mappings = function(prompt_bufnr)
+          actions.select_default:replace(function()
+            actions.close(prompt_bufnr)
+            local selection = action_state.get_selected_entry()
+            if selection then
+              vim.cmd("edit " .. vim.fn.fnameescape(selection.filename))
+            end
+          end)
+          return true
+        end,
+      })
+      :find()
 end
 
 return M
