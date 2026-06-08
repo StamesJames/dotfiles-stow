@@ -210,6 +210,11 @@ hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.move({ direction = "right" 
 hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.move({ direction = "up" }))
 hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.move({ direction = "down" }))
 
+-- screenshots
+hl.bind(mainMod .. " + O", hl.dsp.exec_cmd("hyprshot -m window"))
+hl.bind(mainMod .. " + CTRL + O", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind(mainMod .. " + SHIFT + O", hl.dsp.exec_cmd("hyprshot -m output"))
+
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
 for i = 1, 10 do
