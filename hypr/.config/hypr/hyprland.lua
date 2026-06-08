@@ -33,14 +33,14 @@ hl.monitor({
 hl.monitor({
   output = "desc:Philips Consumer Electronics Company PHL 274E5 UHB1413032391",
   mode = "preferred",
-  position = "0x-1080",
+  position = "auto-up",
   scale = "1",
 })
 ---- Monitor at HM
 hl.monitor({
   output = "desc:LG Electronics 25BL55WY 103NTYT24818",
   mode = "preferred",
-  position = "0x-1200",
+  position = "auto-up",
   scale = "1",
 })
 
@@ -51,14 +51,21 @@ hl.monitor({ output = "desc:LG Electronics E2411 401NDMT3N491", mode = "preferre
 hl.monitor({ output = "desc:Samsung Electric Company T24B350", mode = "preffered", position = "auto", scale = "1" })
 
 -- office monitors
+---- new office monitor
+hl.monitor({
+  output = "desc:Dell Inc. DELL U3223QZ 421B8H3",
+  mode = "preferred",
+  position = "auto-up",
+  scale = "2",
+})
 ---- new Dell monitor
 -- monitor = desc:Dell Inc. DELL P2723QE 8TCR964, preferred, 0x-2160, 2
-hl.monitor({ output = "desc:Dell Inc. DELL P2723QE 8TCR964", mode = "preferred", position = "0x-1080", scale = "2" })
+hl.monitor({ output = "desc:Dell Inc. DELL P2723QE 8TCR964", mode = "preferred", position = "auto-up", scale = "2" })
 ---- old Samsung in office
 hl.monitor({
   output = "desc:Samsung Electric Company S27B970 0x5A565137",
   mode = "preferred",
-  position = "0x-1080",
+  position = "auto-up",
   scale = "1",
 })
 ---- lab screen
