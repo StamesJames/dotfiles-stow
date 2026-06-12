@@ -6,6 +6,7 @@ if status is-interactive
   set -gx EDITOR $editor
   set -gx GIT_EDITOR $editor
   set -gx VISUAL $editor
+  set -gx MANPAGER "nvim +Man!"
 end
 
 ### my aliases
