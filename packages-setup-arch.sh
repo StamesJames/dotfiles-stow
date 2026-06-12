@@ -248,7 +248,9 @@ sudo pacman -S --needed \
   vlc-plugins-all \
   libdvdread \
   libdvdnav \
-  libdvdcss
+  libdvdcss \
+  libbluray \
+  libaacs
 
 echo "############################"
 echo "### devcontainer install ###"
