@@ -96,8 +96,7 @@ sudo pacman -S --needed \
   hypridle \
   waybar \
   pavucontrol \
-  hyprcursor
-paru -S --needed \
+  hyprcursor \
   hyprshot \
   hyprshutdown \
   hyprpicker
@@ -151,7 +150,6 @@ echo "### meeting software install ###"
 echo "################################"
 sudo pacman -S --needed discord
 paru -S --needed \
-  zoom \
   discord-canary
 
 echo "###########################"
@@ -196,9 +194,6 @@ sudo pacman -S --needed \
   qrencode \
   television \
   eza
-paru -S --needed \
-  resvg \
-  coursier
 
 echo "####################################"
 echo "### terminal media tools install ###"
