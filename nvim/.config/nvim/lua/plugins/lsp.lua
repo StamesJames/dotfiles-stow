@@ -62,7 +62,7 @@ return {
         -- Webframeworks
         "svelte",
         -- Godot
-        "gdscript",
+        -- "gdscript",
         -- Lua
         "stylua",
         "lua_ls",
@@ -110,7 +110,7 @@ return {
       -- Webframeworks
       vim.lsp.config("svelte", { capabilities = capabilities })
       -- godot
-      vim.lsp.config("gdscript", { capabilities = capabilities })
+      -- vim.lsp.config("gdscript", { capabilities = capabilities })
       -- lua
       vim.lsp.config("stylua", {})
       vim.lsp.config("lua_ls", { capabilities = capabilities, settings = { format = { enable = false } } })

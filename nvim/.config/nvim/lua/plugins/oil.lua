@@ -10,6 +10,21 @@ return {
       view_options = {
         show_hidden = true,
         natrual_order = true,
+        is_hidden_file = function(name, _)
+          local godot_patterns = {
+            "%.uid[/]?$",    -- .uid files
+            "%.import[/]?$", -- .import files
+            "^%.godot[/]?$", -- .godot directory
+            "^%.mono[/]?$",  -- .mono directory
+            "godot.*%.tmp$", -- godot temp files
+          }
+          for _, pat in ipairs(godot_patterns) do
+            if name:match(pat) then
+              return true
+            end
+          end
+          return false
+        end,
         is_always_hidden = function(name, _)
           return name == ".." or name == ".git"
         end,
