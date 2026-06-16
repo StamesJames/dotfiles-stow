@@ -155,12 +155,10 @@ hl.on("hyprland.start", function()
   hl.exec_cmd(terminal .. ' --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/', {
     workspace = "special:notes silent",
   })
-  hl.exec_cmd(
-    terminal .. ' --background-opacity=0.95 -e nvim -c "cd ~/Nextcloud/notes/" ~/Nextcloud/notes/Todos.md',
-    {
-      workspace = "special:todos silent",
-    }
-  )
+  hl.env("TODO_DIR", os.getenv("HOME") .. "/Nextcloud/todos/")
+  hl.exec_cmd(terminal .. " --background-opacity=0.95 -e $HOME/.cargo/bin/tuxedo", {
+    workspace = "special:todos silent",
+  })
   hl.exec_cmd("ibus start --type wayland")
   hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
 end)
@@ -186,7 +184,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + T", hl.dsp.layout("togglesplit")) -- dwindle only
+hl.bind(mainMod .. " + S", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + left", hl.dsp.focus({ workspace = "e-1" }))
@@ -224,9 +222,10 @@ for i = 1, 10 do
 end
 
 -- Example special workspace (scratchpad)
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+-- hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special("notes"))
+hl.bind(mainMod .. " + T", hl.dsp.workspace.toggle_special("todos"))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))

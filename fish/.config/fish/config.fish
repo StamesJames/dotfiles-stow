@@ -6,8 +6,10 @@ if status is-interactive
   set -gx EDITOR $editor
   set -gx GIT_EDITOR $editor
   set -gx VISUAL $editor
-  set -gx MANPAGER "nvim +Man!"
 end
+
+set -gx MANPAGER "nvim +Man!"
+set -gx TODO_DIR "$HOME/Nextcloud/todos/"
 
 ### my aliases
 alias godot4_3="$HOME/programs/godot/Godot_v4.3-stable_linux.x86_64"
