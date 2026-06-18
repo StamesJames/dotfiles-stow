@@ -149,8 +149,8 @@ echo "################################"
 echo "### meeting software install ###"
 echo "################################"
 sudo pacman -S --needed discord
-paru -S --needed \
-  discord-canary
+# paru -S --needed \
+#   discord-canary
 
 echo "###########################"
 echo "### typesetting install ###"
