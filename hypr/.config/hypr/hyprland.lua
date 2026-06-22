@@ -1,8 +1,20 @@
-----------------------
 ------ MONITORS ------
 ----------------------
 
 -- See https://wiki.hyprland.org/Configuring/Monitors/
+
+local hostname_handle = io.popen("hostnamectl hostname")
+local hostname = ""
+if hostname_handle then
+  hostname = hostname_handle:read("*a"):gsub("%s+$", "")
+  hostname_handle:close()
+end
+
+local homeMonitorPosition = "auto"
+
+if hostname:sub(-3) == "-lt" then
+  homeMonitorPosition = "auto-up"
+end
 
 -- default
 hl.monitor({
@@ -46,9 +58,18 @@ hl.monitor({
 
 -- Home monitors
 ---- Main home desktop monitor
-hl.monitor({ output = "desc:LG Electronics E2411 401NDMT3N491", mode = "preferred", position = "auto", scale = "1" })
+hl.monitor({
+  output = "desc:LG Electronics E2411 401NDMT3N491",
+  mode = "preferred",
+  position = homeMonitorPosition,
+  scale = "1",
+})
 
-hl.monitor({ output = "desc:Samsung Electric Company T24B350", mode = "preffered", position = "auto", scale = "1" })
+hl.monitor({
+  output = "desc:Samsung Electric Company T24B350",
+  mode = "preferred",
+  scale = "1",
+})
 
 -- office monitors
 ---- new office monitor
