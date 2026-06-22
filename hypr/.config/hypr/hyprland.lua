@@ -9,12 +9,9 @@ if hostname_handle then
   hostname = hostname_handle:read("*a"):gsub("%s+$", "")
   hostname_handle:close()
 end
+local is_laptop = hostname:sub(-3) == "-lt"
 
-local homeMonitorPosition = "auto"
-
-if hostname:sub(-3) == "-lt" then
-  homeMonitorPosition = "auto-up"
-end
+local homeMonitorPosition = is_laptop and "auto-up" or "auto"
 
 -- default
 hl.monitor({
@@ -103,17 +100,19 @@ hl.monitor({
 ------------------------
 
 -- Workspaces
-hl.workspace_rule({ workspace = "1", monitor = "desc:LG Electronics E2411 401NDMT3N491", default = true })
-hl.workspace_rule({ workspace = "2", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
-hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
-hl.workspace_rule({ workspace = "4", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
-hl.workspace_rule({ workspace = "5", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
--- second home desktop monitor
-hl.workspace_rule({ workspace = "6", monitor = "desc:Samsung Electric Company T24B350" })
-hl.workspace_rule({ workspace = "7", monitor = "desc:Samsung Electric Company T24B350" })
-hl.workspace_rule({ workspace = "8", monitor = "desc:Samsung Electric Company T24B350" })
-hl.workspace_rule({ workspace = "9", monitor = "desc:Samsung Electric Company T24B350" })
-hl.workspace_rule({ workspace = "10", monitor = "desc:Samsung Electric Company T24B350", default = true })
+if not is_laptop then
+  hl.workspace_rule({ workspace = "1", monitor = "desc:LG Electronics E2411 401NDMT3N491", default = true })
+  hl.workspace_rule({ workspace = "2", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
+  hl.workspace_rule({ workspace = "3", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
+  hl.workspace_rule({ workspace = "4", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
+  hl.workspace_rule({ workspace = "5", monitor = "desc:LG Electronics E2411 401NDMT3N491" })
+  -- second home desktop monitor
+  hl.workspace_rule({ workspace = "6", monitor = "desc:Samsung Electric Company T24B350" })
+  hl.workspace_rule({ workspace = "7", monitor = "desc:Samsung Electric Company T24B350" })
+  hl.workspace_rule({ workspace = "8", monitor = "desc:Samsung Electric Company T24B350" })
+  hl.workspace_rule({ workspace = "9", monitor = "desc:Samsung Electric Company T24B350" })
+  hl.workspace_rule({ workspace = "10", monitor = "desc:Samsung Electric Company T24B350", default = true })
+end
 -- special workspaces
 hl.workspace_rule({ workspace = "special:notes" })
 hl.workspace_rule({ workspace = "special:todos" })
