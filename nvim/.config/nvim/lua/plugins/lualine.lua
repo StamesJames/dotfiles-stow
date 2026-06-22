@@ -20,6 +20,7 @@ return {
         lualine_z = {
           { "location" },
           { wordcount },
+          require("opencode").statusline,
         },
       },
       extensions = {
