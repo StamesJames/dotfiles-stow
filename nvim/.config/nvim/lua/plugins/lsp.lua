@@ -16,6 +16,7 @@ return {
         sources = {
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.typstyle,
+          null_ls.builtins.formatting.prettier,
         },
       })
     end,
@@ -50,10 +51,12 @@ return {
         "rust_analyzer",
         -- Zig
         "zls",
-        -- TS/JS
-        "ts_ls",
+        -- TS/JS (vtsls is the single TS server — ts_ls removed to avoid duplicate clients on vue buffers)
         "eslint",
         "jsonls",
+        -- vue
+        "vue_ls",
+        "vtsls",
         -- HTML
         "html",
         -- CSS
@@ -97,8 +100,7 @@ return {
           inlayHint = true,
         },
       })
-      -- js, ts
-      vim.lsp.config("ts_ls", { capabilities = capabilities })
+      -- js, ts (vtsls is configured below with the @vue/typescript-plugin hybrid mode)
       vim.lsp.config("eslint", { capabilities = capabilities })
       vim.lsp.config("jsonls", { capabilities = capabilities })
 
@@ -132,6 +134,47 @@ return {
       vim.lsp.config("dotls", { capabilities = capabilities })
       -- just
       vim.lsp.config("just", { capabilities = capabilities })
+
+      local vue_language_server_path = vim.fn.expand("$MASON/packages")
+          .. "/vue-language-server"
+          .. "/node_modules/@vue/language-server"
+      -- local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+      local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
+      local vue_plugin = {
+        name = "@vue/typescript-plugin",
+        location = vue_language_server_path,
+        languages = { "vue" },
+        configNamespace = "typescript",
+      }
+      local vtsls_config = {
+        settings = {
+          vtsls = {
+            tsserver = {
+              globalPlugins = {
+                vue_plugin,
+              },
+            },
+          },
+        },
+        filetypes = tsserver_filetypes,
+      }
+      -- vue_ls settings: import-on-move tracking + missing-prop inlay hints.
+      -- vtsls alone handles TS in vue buffers via the @vue/typescript-plugin
+      -- above; ts_ls is intentionally NOT enabled to avoid duplicate TS clients
+      -- attaching to the same buffer (vue_ls + ts_ls + vtsls all on one file).
+      local vue_ls_config = {
+        capabilities = capabilities,
+        settings = {
+          vue = {
+            updateImportsOnFileMove = { enabled = true },
+            inlayHints = { missingProps = true },
+          },
+        },
+      }
+
+      vim.lsp.config("vtsls", vtsls_config)
+      vim.lsp.config("vue_ls", vue_ls_config)
+
       --------------------------------------------------------------------------
       vim.lsp.enable(lsp_enables)
 
