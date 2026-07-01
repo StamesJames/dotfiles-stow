@@ -20,6 +20,14 @@ return {
             "godot.*%.tmp$", -- godot temp files
             -- dotfiles
             "^%.",
+            -- latex
+            "%.aux[/]?$",
+            "%.bbl[/]?$",
+            "%.blg[/]?$",
+            "%.fdb_latexmk[/]?$",
+            "%.fls[/]?$",
+            "%.upa[/]?$",
+            "%.upb[/]?$",
           }
           for _, pat in ipairs(hide_patterns) do
             if name:match(pat) then
