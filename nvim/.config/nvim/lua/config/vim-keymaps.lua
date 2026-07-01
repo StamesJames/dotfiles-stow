@@ -5,7 +5,7 @@ return {
     vim.keymap.set({ "n", "v" }, "k", "gk", { noremap = true })
 
     -- terminal stuff
-    vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+    vim.keymap.set("t", "<c-esc>", "<c-\\><c-n>")
 
     -- move through windows
     vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
