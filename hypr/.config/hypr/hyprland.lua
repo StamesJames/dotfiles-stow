@@ -11,7 +11,7 @@ if hostname_handle then
 end
 local is_laptop = hostname:sub(-3) == "-lt"
 
-local homeMonitorPosition = is_laptop and "auto-up" or "auto"
+local homeMonitorPosition = is_laptop and "auto-up" or "auto-left"
 
 -- default
 hl.monitor({
