@@ -307,6 +307,20 @@ echo "###################"
 chsh -s /bin/fish
 fish
 
+echo "######################"
+echo "### audio software ###"
+echo "######################"
+
+sudo pacman -S --needed \
+  pipewire \
+  pipewire-jack \
+  pipewire-alsa \
+  pipewire-pulse \
+  wireplumber \
+  realtime-privileges \
+  lmms
+sudo usermod -aG realtime $USER
+
 echo "###########################"
 echo "### post packages setup ###"
 echo "###########################"
