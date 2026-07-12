@@ -18,5 +18,15 @@
       ],
       "enabled": true,
     },
+    "nuxt": {
+      "type": "remote",
+      "url": "https://nuxt.com/mcp",
+      "enabled": true
+    },
+    "vue-docs": {
+      "type": "remote",
+      "url": "https://mcp.vue-mcp.org/mcp",
+      "enabled": true
+    },
   },
 }
