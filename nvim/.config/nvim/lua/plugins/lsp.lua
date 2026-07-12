@@ -1,25 +1,71 @@
 return {
   {
+    "stevearc/conform.nvim",
+    opts = {},
+    config = function(_, _)
+      local prettier_files = {
+        ".prettierrc",
+        ".prettierrc.json",
+        ".prettierrc.json5",
+        ".prettierrc.js",
+        ".prettierrc.cjs",
+        ".prettierrc.mjs",
+        ".prettierrc.yaml",
+        ".prettierrc.yml",
+        ".prettierrc.toml",
+        "prettier.config.js",
+        "prettier.config.cjs",
+        "prettier.config.mjs",
+      }
+      local eslint_files = {
+        "eslint.config.js",
+        "eslint.config.mjs",
+        "eslint.config.cjs",
+        "eslint.config.ts",
+        "eslint.config.mts",
+        "eslint.config.cts",
+      }
+
+      require("conform").setup({
+        formatters_by_ft = {
+          lua = { "stylua" },
+          typst = { "typstyle" },
+          javascript = { "prettier", "eslint_d" },
+          javascriptreact = { "prettier", "eslint_d" },
+          typescript = { "prettier", "eslint_d" },
+          typescriptreact = { "prettier", "eslint_d" },
+          vue = { "prettier", "eslint_d" },
+          svelte = { "prettier", "eslint_d" },
+        },
+        formatters = {
+          prettier = {
+            condition = function(self, ctx)
+              return vim.fs.root(ctx.filename, prettier_files) ~= nil
+            end,
+          },
+          eslint_d = {
+            condition = function(self, ctx)
+              if vim.fs.root(ctx.filename, prettier_files) ~= nil then
+                return false
+              end
+              return vim.fs.root(ctx.filename, eslint_files) ~= nil
+            end,
+          },
+        },
+        format_on_save = function(bufnr)
+          return { timeout_ms = 500, lsp_fallback = true }
+        end,
+      })
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
-      ensure_installed = { "tree-sitter-cli" },
+      ensure_installed = { "tree-sitter-cli", "eslint_d", "prettier" },
       ui = {
         border = "double",
       },
     },
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    config = function(_, _)
-      local null_ls = require("null-ls")
-      null_ls.setup({
-        sources = {
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.typstyle,
-          null_ls.builtins.formatting.prettier,
-        },
-      })
-    end,
   },
   {
     "neovim/nvim-lspconfig",
@@ -136,8 +182,8 @@ return {
       vim.lsp.config("just", { capabilities = capabilities })
 
       local vue_language_server_path = vim.fn.expand("$MASON/packages")
-          .. "/vue-language-server"
-          .. "/node_modules/@vue/language-server"
+        .. "/vue-language-server"
+        .. "/node_modules/@vue/language-server"
       -- local vue_language_server_path = vim.fn.stdpath('data') .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
       local tsserver_filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" }
       local vue_plugin = {
@@ -192,6 +238,9 @@ return {
       vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+      vim.keymap.set("n", "<leader>gf", function()
+        require("conform").format({ lsp_fallback = true, timeout_ms = 500 })
+      end, { desc = "Format buffer" })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
@@ -202,16 +251,6 @@ return {
 
           if client:supports_method("textDocument/inlayHint") then
             vim.lsp.inlay_hint.enable(true)
-          end
-
-          if client:supports_method("textDocument/formatting") then
-            vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = args.buf,
-              callback = function()
-                vim.lsp.buf.format({ bufnr = args.buf, id = client.id })
-              end,
-            })
           end
         end,
       })
