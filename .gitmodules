@@ -1,0 +1,3 @@
+[submodule "opencode/.templates/opencode/lean/skills/lean"]
+	path = opencode/.templates/opencode/lean/skills/lean
+	url = git@github.com:leanprover/skills.git
