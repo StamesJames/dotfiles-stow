@@ -9,24 +9,4 @@
       "model": "opencode-go/glm-5.2",
     },
   },
-  "mcp": {
-    "lean-lsp": {
-      "type": "local",
-      "command": [
-        "uvx",
-        "lean-lsp-mcp"
-      ],
-      "enabled": true,
-    },
-    "nuxt": {
-      "type": "remote",
-      "url": "https://nuxt.com/mcp",
-      "enabled": true
-    },
-    "vue-docs": {
-      "type": "remote",
-      "url": "https://mcp.vue-mcp.org/mcp",
-      "enabled": true
-    },
-  },
 }
