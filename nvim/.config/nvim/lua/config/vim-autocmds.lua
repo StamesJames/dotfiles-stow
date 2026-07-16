@@ -23,8 +23,9 @@ return {
       desc = "Start treesitter and auto-install missing parsers",
       group = vim.api.nvim_create_augroup("treesitter-start", { clear = true }),
       callback = function(args)
+        local ignore_install = { "idris", "idris2" }
         local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
-        if not lang then
+        if not lang or vim.list_contains(ignore_install, lang) then
           return
         end
         if pcall(vim.treesitter.start, args.buf, lang) then
