@@ -352,6 +352,7 @@ godot_ai/managed_server_ws_port = 0
 godot_ai/telemetry_enabled = true
 godot_ai/dev_mode = false
 godot_ai/pending_self_update_event = ""
+godot_ai/managed_server_ws_token = ""
 shortcuts = []
 builtin_action_overrides = []
 metadata/script_setup_templates_dictionary = {
