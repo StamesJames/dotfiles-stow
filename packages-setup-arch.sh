@@ -321,6 +321,14 @@ sudo pacman -S --needed \
   lmms
 sudo usermod -aG realtime $USER
 
+echo "#####################"
+echo "### notifications ###"
+echo "#####################"
+
+sudo pacman -S --needed \
+  libnotify \
+  dunst
+
 echo "###########################"
 echo "### post packages setup ###"
 echo "###########################"
