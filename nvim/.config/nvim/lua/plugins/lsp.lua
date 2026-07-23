@@ -36,11 +36,12 @@ return {
           typescriptreact = { "prettier", "eslint_d" },
           vue = { "prettier", "eslint_d" },
           svelte = { "prettier", "eslint_d" },
+          markdown = { "prettier" },
         },
         formatters = {
           prettier = {
             condition = function(self, ctx)
-              return vim.fs.root(ctx.filename, prettier_files) ~= nil
+              return vim.bo[ctx.buf].filetype == "markdown" or vim.fs.root(ctx.filename, prettier_files) ~= nil
             end,
           },
           eslint_d = {
@@ -91,6 +92,7 @@ return {
         -- python
         "basedpyright",
         "ruff",
+        "django_language_server",
         -- C/C++
         "clangd",
         -- Rust
@@ -132,6 +134,7 @@ return {
       -- python
       vim.lsp.config("basedpyright", { capabilities = capabilities })
       vim.lsp.config("ruff", { capabilities = capabilities })
+      vim.lsp.config("django_language_server", { capabilities = capabilities })
       -- C, C++
       vim.lsp.config("clangd", { capabilities = capabilities })
       -- rust
