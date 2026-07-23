@@ -5,7 +5,10 @@ export const NotificationPlugin: Plugin = async ({ project, client, $, directory
     event: async ({ event }) => {
       // Send notification on session completion
       if (event.type === "session.idle") {
-        await $`osascript -e 'display notification "Session completed!" with title "opencode"'`
+        await $`notify-send -t 0 "Opencode:" "Session Complete!"`
+      }
+      if (event.type === "permission.asked") {
+        await $`notify-send -t 0 "Opencode:" "Need Permission!"`
       }
     },
   }
