@@ -181,6 +181,7 @@ hl.on("hyprland.start", function()
 	})
 	hl.exec_cmd("ibus start --type wayland")
 	hl.exec_cmd("/usr/lib/hyprpolkitagent/hyprpolkitagent")
+	hl.exec_cmd("dunst")
 end)
 
 -----------------------------------
