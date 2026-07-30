@@ -328,6 +328,14 @@ echo "#####################"
 sudo pacman -S --needed \
   libnotify \
   dunst
+echo "##############"
+echo "### python ###"
+echo "##############"
+
+sudo pacman -Syu --needed \
+  python \
+  python-numpy \
+  python-scipy
 
 echo "###########################"
 echo "### post packages setup ###"
