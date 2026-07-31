@@ -50,5 +50,23 @@ return {
     -- textwidth
     -- vim.opt.textwidth = 80
     vim.opt.colorcolumn = { "81", "101" }
+
+    vim.g.coqtail_noimap = true
+    vim.cmd([[
+      if &t_Co > 16
+        if &background ==# 'dark'
+          hi def CoqtailChecked ctermbg=17 guibg=#113311
+          hi def CoqtailSent    ctermbg=60 guibg=#007630
+        else
+          hi def CoqtailChecked ctermbg=157 guibg=LightGreen
+          hi def CoqtailSent    ctermbg=40  guibg=LimeGreen
+        endif
+      else
+        hi def CoqtailChecked ctermbg=4 guibg=LightGreen
+        hi def CoqtailSent    ctermbg=7 guibg=LimeGreen
+      endif
+      hi def link CoqtailError         Error
+      hi def link CoqtailOmitted       coqProofAdmit
+    ]])
   end,
 }
