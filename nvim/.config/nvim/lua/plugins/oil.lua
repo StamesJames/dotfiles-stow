@@ -8,15 +8,15 @@ return {
       delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
       view_options = {
-        show_hidden = true,
+        show_hidden = false,
         natrual_order = true,
         is_hidden_file = function(name, _)
           local hide_patterns = {
             -- Godot
-            "%.uid[/]?$",    -- .uid files
+            "%.uid[/]?$", -- .uid files
             "%.import[/]?$", -- .import files
             "^%.godot[/]?$", -- .godot directory
-            "^%.mono[/]?$",  -- .mono directory
+            "^%.mono[/]?$", -- .mono directory
             "godot.*%.tmp$", -- godot temp files
             -- dotfiles
             "^%.",
