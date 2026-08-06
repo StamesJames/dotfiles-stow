@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo "#####################"
+echo "### system update ###"
+echo "#####################"
+
+sudo pacman -Syu \
+  base-devel
+
 echo "###################"
 echo "### git install ###"
 echo "###################"
@@ -31,12 +38,14 @@ sudo pacman -S --needed \
 echo "#################"
 echo "### php setup ###"
 echo "#################"
-sudo pacman -S --needed php
+sudo pacman -S --needed \
+  php
 
 echo "##############################"
 echo "### pacman-contrib install ###"
 echo "##############################"
-sudo pacman -S --needed pacman-contrib
+sudo pacman -S --needed \
+  pacman-contrib
 
 echo "##################"
 echo "### paru setup ###"
@@ -57,7 +66,7 @@ paru -Syu
 
 echo "#####################"
 echo "### fonts install ###"
-echo "#########EEEE########"
+echo "#####################"
 sudo pacman -S --needed \
   gnu-free-fonts \
   ttf-meslo-nerd \
@@ -82,7 +91,8 @@ echo "#####################"
 echo "### shell install ###"
 echo "#####################"
 # sudo pacman -S --needed zsh
-sudo pacman -S --needed fish
+sudo pacman -S --needed \
+  fish
 
 echo "########################"
 echo "### hyprland install ###"
@@ -118,26 +128,25 @@ sudo pacman -S --needed \
 echo "########################"
 echo "### terminal install ###"
 echo "########################"
-# sudo pacman -S --needed alacritty
-sudo pacman -S --needed ghostty
+sudo pacman -S --needed \
+  ghostty
 sudo pacman -S --needed \
   starship \
-  tmux \
-  tmuxp
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+  tmux
 
 echo "###################"
 echo "### IDE install ###"
 echo "###################"
-sudo pacman -S --needed neovim
+sudo pacman -S --needed \
+  neovim
 
 echo "#######################"
 echo "### browser install ###"
 echo "#######################"
-sudo pacman -S --needed firefox
-paru -S --needed zen-browser-bin
+sudo pacman -S --needed \
+  firefox
+paru -S --needed \
+  zen-browser-bin
 
 echo "##########################"
 echo "### messangers install ###"
@@ -148,9 +157,8 @@ sudo pacman -S --needed \
 echo "################################"
 echo "### meeting software install ###"
 echo "################################"
-sudo pacman -S --needed discord
-# paru -S --needed \
-#   discord-canary
+sudo pacman -S --needed \
+  discord
 
 echo "###########################"
 echo "### typesetting install ###"
@@ -158,7 +166,8 @@ echo "###########################"
 sudo pacman -S --needed \
   typst \
   texlive \
-  python-pylatexenc
+  python-pylatexenc \
+  python-pygments
 
 echo "################################"
 echo "### office programms install ###"
@@ -224,7 +233,8 @@ sudo pacman -S --needed \
 echo "###########################"
 echo "### tree sitter install ###"
 echo "###########################"
-sudo pacman -S --needed tree-sitter-cli
+sudo pacman -S --needed \
+  tree-sitter-cli
 
 echo "###################################"
 echo "### printer and scanner install ###"
@@ -259,9 +269,8 @@ sudo npm install -g @devcontainers/cli
 echo "#############################"
 echo "### cloud storage install ###"
 echo "#############################"
-sudo pacman -S --neede \
-  nextcloud-client \
-  owncloud-client
+sudo pacman -S --needed \
+  nextcloud-client
 
 echo "#########################"
 echo "### bluetooth install ###"
@@ -271,39 +280,9 @@ sudo pacman -S --neede \
   bluez-utils \
   blueman
 
-# echo "#######################"
-# echo "### haskell install ###"
-# echo "#######################"
-# paru -S --needed \
-#   ghcup-hs-bin
-# ghcup install ghc
-# ghcup install cabal
-# ghcup install stack
-# ghcup install hls
-
-# echo "###########################"
-# echo "### zsh plugins install ###"
-# echo "###########################"
-# sudo pacman -S --needed \
-#   zsh-autosuggestions \
-#   zsh-syntax-highlighting \
-#   zsh-completions \
-#   zsh-history-substring-search
-
-# echo "#################"
-# echo "### i3 install ###"
-# echo "#################"
-# sudo pacman -S --needed \
-#   i3-wm \
-#   polybar \
-#   picom \
-#   feh \
-#   rofi
-
 echo "###################"
 echo "### shell setup ###"
 echo "###################"
-# sudo chsh -s /bin/zsh
 chsh -s /bin/fish
 fish
 
@@ -328,6 +307,7 @@ echo "#####################"
 sudo pacman -S --needed \
   libnotify \
   dunst
+
 echo "##############"
 echo "### python ###"
 echo "##############"
