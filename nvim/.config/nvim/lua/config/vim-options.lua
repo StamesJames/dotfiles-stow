@@ -47,6 +47,10 @@ return {
     -- scrolling
     vim.opt.scrolloff = 8
 
+    -- searching
+    vim.opt.ignorecase = true
+    vim.opt.smartcase = true
+
     -- textwidth
     -- vim.opt.textwidth = 80
     vim.opt.colorcolumn = { "81", "101" }
