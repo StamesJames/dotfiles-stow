@@ -11,6 +11,7 @@ end
 set -gx MANPAGER "nvim +Man!"
 set -gx TODO_DIR "$HOME/Nextcloud/todos/"
 set -gx DISABLE_TELEMETRY true
+set -gx JAVA_HOME /usr/lib/jvm/java-26-openjdk
 
 ### my aliases
 alias godot4_3="$HOME/programs/godot/Godot_v4.3-stable_linux.x86_64"

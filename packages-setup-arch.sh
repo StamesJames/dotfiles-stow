@@ -257,6 +257,15 @@ sudo pacman -S --needed \
   libbluray \
   libaacs
 
+echo "##################################"
+echo "### dvd/bluray-backups install ###"
+echo "##################################"
+pacman -S --needed \
+  jre-openjdk \
+  dvdbackup
+paru -S --needed \
+  bluraybackup
+
 echo "############################"
 echo "### devcontainer install ###"
 echo "############################"
@@ -297,7 +306,12 @@ sudo pacman -S --needed \
   pipewire-pulse \
   wireplumber \
   realtime-privileges \
-  lmms
+  lmms \
+  surge-xt \
+  ardour \
+  qtractor
+paru -S --needed \
+  zrythm
 sudo usermod -aG realtime $USER
 
 echo "#####################"
