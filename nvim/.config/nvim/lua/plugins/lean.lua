@@ -5,6 +5,7 @@ return {
   -- lsp = { enable = true },
 
   dependencies = {
+    "nvim-telescope/telescope.nvim",
     -- "neovim/nvim-lspconfig",
     -- "nvim-lua/plenary.nvim",
     -- "saghen/blink.cmp",
