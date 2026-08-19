@@ -105,6 +105,8 @@ return {
         -- vue
         "vue_ls",
         "vtsls",
+        -- angular
+        "angularls",
         -- HTML
         "html",
         -- CSS
@@ -149,6 +151,8 @@ return {
           inlayHint = true,
         },
       })
+      -- angular
+      vim.lsp.config("angularls", { capabilities = capabilities })
       -- js, ts (vtsls is configured below with the @vue/typescript-plugin hybrid mode)
       vim.lsp.config("eslint", { capabilities = capabilities })
       vim.lsp.config("jsonls", { capabilities = capabilities })
