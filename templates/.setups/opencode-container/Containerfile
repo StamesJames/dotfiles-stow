@@ -1,0 +1,18 @@
+# Base digest pinned — bump with: oc-build --refresh
+FROM ghcr.io/anomalyco/opencode@sha256:45174ca08c3316f097788c90884a71d854425d4d40bc24ddb37c1d2f10eacf3d
+
+RUN apk add --no-cache git openssh-client tzdata \
+    && adduser -D -u 1000 dev \
+    && mkdir /workspace \
+    && printf '#!/bin/sh\nexit 0\n' > /usr/local/bin/notify-send \
+    && chmod 755 /usr/local/bin/notify-send
+
+USER dev
+ENV HOME=/home/dev
+RUN mkdir -p /home/dev/.local/share/opencode \
+        /home/dev/.local/state/opencode \
+        /home/dev/.cache/opencode \
+        /home/dev/.ssh \
+    && chmod 700 /home/dev/.ssh
+WORKDIR /workspace
+ENTRYPOINT ["opencode"]
