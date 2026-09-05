@@ -20,6 +20,7 @@ alias godot4_4_1="$HOME/programs/godot/Godot_v4.4.1-stable_linux.x86_64"
 alias godot4_6_1="$HOME/programs/godot/Godot_v4.6.1-stable_linux.x86_64"
 alias godot4_6_3="$HOME/programs/godot/Godot_v4.6.3-stable_linux.x86_64"
 alias godot4_7="$HOME/programs/godot/Godot_v4.7-stable_linux.x86_64"
+alias godot4_7_2="$HOME/programs/godot/Godot_v4.7.2-stable_linux.x86_64"
 
 # alias godot="godot4_6_3"
 alias gvim="nvim --listen 127.0.0.1:6004"
