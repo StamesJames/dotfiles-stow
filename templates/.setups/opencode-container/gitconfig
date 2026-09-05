@@ -1,0 +1,9 @@
+[user]
+	name = AI for Benedict Smit
+	email = stames.for.ai@gmail.com
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[core]
+	editor = nvim

@@ -1,18 +1,102 @@
-# Base digest pinned — bump with: oc-build --refresh
-FROM ghcr.io/anomalyco/opencode@sha256:45174ca08c3316f097788c90884a71d854425d4d40bc24ddb37c1d2f10eacf3d
+# Pinned bases — bump with: oc-build --refresh
+#   - opencode: upstream glibc release tarball, version + sha256 pinned.
+#     The official ghcr.io/anomalyco/opencode image ships a musl-linked
+#     binary that cannot run on Arch/glibc.
+#   - archlinux:base-devel image digest.
+ARG OPENCODE_VERSION=v1.18.27
+ARG OPENCODE_SHA256=4af5494f9433f59db8c1e344198f0ee72a50c06ec009fb4a8aeab4c2d4abd702
 
-RUN apk add --no-cache git openssh-client tzdata \
-    && adduser -D -u 1000 dev \
+FROM docker.io/library/archlinux:base-devel@sha256:84cd9ef000b3cff245ec028e87965b84724f4bf1cc63fc2741ba927b88515ed6
+
+ARG OPENCODE_VERSION
+ARG OPENCODE_SHA256
+
+RUN pacman -Sy --noconfirm archlinux-keyring \
+    && pacman -Syu --noconfirm --needed \
+        git git-lfs \
+        openssh tzdata curl wget \
+        neovim fish \
+        python python-pip python-numpy python-scipy \
+        nodejs npm pnpm bun deno \
+        rustup \
+        ffmpeg \
+        docker docker-buildx podman \
+        ripgrep fd fzf jq \
+        7zip unzip zip \
+        typst \
+        clang scons php pandoc-cli \
+    && pacman -Scc --noconfirm \
+    && useradd -m -u 1000 -s /usr/bin/fish dev \
     && mkdir /workspace \
     && printf '#!/bin/sh\nexit 0\n' > /usr/local/bin/notify-send \
     && chmod 755 /usr/local/bin/notify-send
 
+RUN curl -fsSL -o /tmp/opencode.tar.gz \
+        "https://github.com/anomalyco/opencode/releases/download/${OPENCODE_VERSION}/opencode-linux-x64.tar.gz" \
+    && echo "${OPENCODE_SHA256}  /tmp/opencode.tar.gz" | sha256sum -c - \
+    && tar -xzf /tmp/opencode.tar.gz -C /usr/local/bin opencode \
+    && rm -f /tmp/opencode.tar.gz
+
+# rustup proxies on PATH (rustup is a multi-call binary); a minimal stable
+# toolchain incl. rust-src/rustfmt/clippy is baked as a seed and copied into
+# the persistent RUSTUP_HOME on first start (see oc-entrypoint/oc-shell).
+RUN ln -s /usr/bin/rustup /usr/local/bin/cargo \
+    && ln -s /usr/bin/rustup /usr/local/bin/rustc \
+    && ln -s /usr/bin/rustup /usr/local/bin/rustdoc \
+    && ln -s /usr/bin/rustup /usr/local/bin/rustfmt \
+    && ln -s /usr/bin/rustup /usr/local/bin/cargo-fmt \
+    && ln -s /usr/bin/rustup /usr/local/bin/cargo-clippy \
+    && ln -s /usr/bin/rustup /usr/local/bin/clippy-driver \
+    && RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo-seed rustup set profile minimal \
+    && RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo-seed rustup default stable \
+    && RUSTUP_HOME=/opt/rustup CARGO_HOME=/opt/cargo-seed rustup component add rust-src rustfmt clippy \
+    && rm -rf /opt/cargo-seed \
+    && chmod -R a+rX /opt/rustup
+
+RUN printf '%s\n' \
+        'if [ ! -e "$RUSTUP_HOME/settings.toml" ] && [ -d /opt/rustup ]; then' \
+        '    cp -a /opt/rustup/. "$RUSTUP_HOME"/' \
+        'fi' \
+        > /usr/local/bin/rustup-seed \
+    && printf '%s\n' \
+        '#!/bin/sh' \
+        '. /usr/local/bin/rustup-seed' \
+        'exec opencode "$@"' \
+        > /usr/local/bin/oc-entrypoint \
+    && printf '%s\n' \
+        '#!/bin/sh' \
+        '. /usr/local/bin/rustup-seed' \
+        'exec /usr/bin/fish "$@"' \
+        > /usr/local/bin/oc-shell \
+    && chmod 755 /usr/local/bin/oc-entrypoint /usr/local/bin/oc-shell \
+    && mkdir -p /etc/xdg/nvim \
+    && printf 'set shadafile=NONE\nset noswapfile\nset noundofile\n' > /etc/xdg/nvim/sysinit.vim
+
 USER dev
-ENV HOME=/home/dev
+ENV HOME=/home/dev \
+    LANG=C.UTF-8 \
+    RUSTUP_HOME=/home/dev/.rustup \
+    CARGO_HOME=/home/dev/.cargo \
+    NPM_CONFIG_CACHE=/home/dev/.cache/tooling/npm \
+    PIP_CACHE_DIR=/home/dev/.cache/tooling/pip \
+    DENO_DIR=/home/dev/.cache/tooling/deno \
+    BUN_INSTALL=/home/dev/.cache/tooling/bun \
+    PNPM_HOME=/home/dev/.cache/tooling/pnpm \
+    npm_config_store_dir=/home/dev/.cache/tooling/pnpm-store \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/dev/.cargo/bin
 RUN mkdir -p /home/dev/.local/share/opencode \
         /home/dev/.local/state/opencode \
         /home/dev/.cache/opencode \
+        /home/dev/.cache/tooling/npm \
+        /home/dev/.cache/tooling/pip \
+        /home/dev/.cache/tooling/deno \
+        /home/dev/.cache/tooling/bun \
+        /home/dev/.cache/tooling/pnpm \
+        /home/dev/.cache/tooling/pnpm-store \
+        /home/dev/.local/share/fish \
+        /home/dev/.rustup \
+        /home/dev/.cargo/bin \
         /home/dev/.ssh \
     && chmod 700 /home/dev/.ssh
 WORKDIR /workspace
-ENTRYPOINT ["opencode"]
+ENTRYPOINT ["oc-entrypoint"]

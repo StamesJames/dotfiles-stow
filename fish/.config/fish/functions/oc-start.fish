@@ -1,4 +1,4 @@
-function oc -d "Run opencode in a hardened rootless podman container"
+function oc-start -d "Run opencode in a hardened rootless podman container"
     argparse --ignore-unknown 'ssh' 'shell' 'h/help' -- $argv
     or return
 
@@ -9,12 +9,13 @@ function oc -d "Run opencode in a hardened rootless podman container"
         echo "                 consumed only if the first argument is an existing directory"
         echo "  --ssh          forward the SSH agent socket for git over SSH"
         echo "                 (needs \$SSH_AUTH_SOCK; private keys never enter the container)"
-        echo "  --shell        start a shell inside the container instead of opencode"
+        echo "  --shell        start a fish shell inside the container instead of opencode"
         echo "  opencode-args  passed through to opencode; prefix with -- if they clash"
         echo "                 with oc's flags (e.g. oc -- --help)"
         echo
         echo "The container is rootless, read-only and capability-less; only the project"
-        echo "folder is writable. State persists in ~/.local/share/opencode-sandbox."
+        echo "folder and sandbox tool state (rustup, cargo and package-manager caches)"
+        echo "are writable. State persists in ~/.local/share/opencode-sandbox."
         echo "Build or update the image with: oc-build [--refresh]"
         return 0
     end
@@ -38,7 +39,7 @@ function oc -d "Run opencode in a hardened rootless podman container"
     end
 
     set -l state $HOME/.local/share/opencode-sandbox
-    mkdir -p $state/share $state/state $state/cache
+    mkdir -p $state/share $state/state $state/cache $state/rustup $state/cargo $state/tooling $state/fish
 
     set -l tz (timedatectl show -p Timezone --value 2>/dev/null)
     if test -z "$tz"
@@ -56,7 +57,11 @@ function oc -d "Run opencode in a hardened rootless podman container"
         -e TZ=$tz \
         -v $state/share:/home/dev/.local/share/opencode \
         -v $state/state:/home/dev/.local/state/opencode \
-        -v $state/cache:/home/dev/.cache/opencode
+        -v $state/cache:/home/dev/.cache/opencode \
+        -v $state/rustup:/home/dev/.rustup \
+        -v $state/cargo:/home/dev/.cargo \
+        -v $state/tooling:/home/dev/.cache/tooling \
+        -v $state/fish:/home/dev/.local/share/fish
 
     if set -q TERM
         set -a cmd -e TERM=$TERM
@@ -70,9 +75,9 @@ function oc -d "Run opencode in a hardened rootless podman container"
     if test -f $HOME/.config/opencode/opencode.jsonc
         set -a cmd -v (dirname (realpath $HOME/.config/opencode/opencode.jsonc)):/home/dev/.config/opencode:ro
     end
-    # if test -f $HOME/.gitconfig
-    #     set -a cmd -v $HOME/.gitconfig:/home/dev/.gitconfig:ro
-    # end
+    if test -f $HOME/.setups/opencode-container/gitconfig
+        set -a cmd -v $HOME/.setups/opencode-container/gitconfig:/home/dev/.gitconfig:ro
+    end
     if set -q _flag_ssh
         set -a cmd -v $SSH_AUTH_SOCK:/run/ssh-agent.sock -e SSH_AUTH_SOCK=/run/ssh-agent.sock
         if test -f $HOME/.ssh/known_hosts
@@ -88,7 +93,7 @@ function oc -d "Run opencode in a hardened rootless podman container"
         set -a cmd -i
     end
     if set -q _flag_shell
-        set -a cmd --entrypoint /bin/sh
+        set -a cmd --entrypoint /usr/local/bin/oc-shell
     end
 
     set -a cmd $image $opencode_args
